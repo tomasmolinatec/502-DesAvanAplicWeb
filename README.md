@@ -1,6 +1,5 @@
 # 502-DesAvanAplicWeb
 
-## Facundo, Esparza
-## Desarrollador DevOps/Backend
+## A01784521: Facundo, Esparza (Desarrollador_DevOps/Backend)
 
 502 - Desarrollo Avanzado de Aplicaciones Web
