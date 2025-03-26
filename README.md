@@ -5,7 +5,7 @@
 ## Imanol Santisteban(DevOps/BackEnd)
 ## Nicolas Alarcon Panopoulou (DB/Backend)
 ## Alberto Limón Cancino (DB/Backend)
-## Leon Blanga Hasbani (DevOps / Frontend)
+## a01784008:leon,blanga(DEVOPS_FRONTEND)
 
 
 502 - Desarrollo Avanzado de Aplicaciones Web
