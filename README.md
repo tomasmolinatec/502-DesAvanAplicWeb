@@ -1,10 +1,2 @@
-# 502-DesAvanAplicWeb
-
-## Tomas Molina Perez Diez
-## Jefe de Base de Datos/Backend
-## Imanol Santisteban(DevOps/BackEnd)
-## Nicolas Alarcon Panopoulou (DB/Backend)
-## Alberto Limón Cancino (DB/Backend)
-
-
-502 - Desarrollo Avanzado de Aplicaciones Web
+## Andrés, Gomes Brandt (Backend/deployment)
+## 502 - Desarrollo Avanzado de Aplicaciones Web
