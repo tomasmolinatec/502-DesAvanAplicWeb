@@ -5,7 +5,18 @@
 ## Imanol Santisteban(DevOps/BackEnd)
 ## Nicolas Alarcon Panopoulou (DB/Backend)
 ## Alberto Limón Cancino (DB/Backend)
-## Valeria Tapia (DB/Backend)
 
 
+
+
+
+
+
+
+
+
+
+
+
+## Valeria, Tapia (DB/Backend)
 502 - Desarrollo Avanzado de Aplicaciones Web
