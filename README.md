@@ -6,7 +6,7 @@
 ## Alberto Limón Cancino (DB/Backend)
 ## Paul Araque Fernandez (DB/Backend)
 ## Gabriel, Edid Harari (Full-Stack)
-## Nikole
+## Nikole Morales Rosas (DB/Backend)
 
 
 502 - Desarrollo Avanzado de Aplicaciones Web
