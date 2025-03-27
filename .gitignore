@@ -1,0 +1,4 @@
+# ignore flake files
+flake.nix
+flake.lock
+.direnv/
