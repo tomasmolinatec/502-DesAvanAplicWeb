@@ -1,7 +1,6 @@
 # 502-DesAvanAplicWeb
 
-## a01784116:tomas,molina
-## (JEFE_DB/BACKEND)
+## Tomas, Molina Perez Diez (Jefe DB/Backend)
 ## Imanol Santisteban(DevOps/BackEnd)
 ## Nicolas Alarcon Panopoulou (DB/Backend)
 ## Alberto Limón Cancino (DB/Backend)
