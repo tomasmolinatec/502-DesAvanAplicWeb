@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
-import { JsConceptsApp } from './Tarea_1/JSconcepts.tsx';
+import { JsConceptsApp } from '../../class1/A01025119/JSconcepts';
 
 document.body.style.margin = '0';
 document.body.style.padding = '0';
@@ -10,7 +10,7 @@ document.body.style.height = '100vh';
 
 const centeredStyle: React.CSSProperties = {
   display: 'flex',
-  flexDirection: 'column', // so heading and button stack vertically
+  flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
   height: '100vh',
@@ -35,7 +35,7 @@ const buttonStyle: React.CSSProperties = {
   border: 'none',
   borderRadius: '0.5rem',
   cursor: 'pointer',
-  textDecoration: 'none', // important for <Link> styling
+  textDecoration: 'none',
 };
 
 const Student1App = () => (

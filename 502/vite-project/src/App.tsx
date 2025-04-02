@@ -2,7 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import './class1/A01025119/A01025119.tsx';
+import './class2/A01025119/dokyu_main.tsx';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -27,7 +27,7 @@ function App() {
         </p>
         <p>
           <a href="/A01025119" target="_blank" rel="noopener noreferrer">
-            Go to Student 1 App
+            Pagina de Do Kyu
           </a>
         </p>
       </div>
