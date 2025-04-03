@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 import { JsConceptsApp } from '../../class1/A01025119/JSconcepts';
-import Login from './Tarea_2/Login';
+import Login1 from './Tarea_2/Login_class2';
+import Login2 from '../../class3/A01025119/Login_class3';
 import './main_design.css';
 
 const Student1App = () => (
@@ -21,11 +22,16 @@ const Student1App = () => (
             <Link to="/class2" className="class-button">
               Go to Class 2
             </Link>
+            <br />
+            <Link to="/class3" className="class-button">
+              Go to Class 3
+            </Link>
           </div>
         }
       />
       <Route path="/class1" element={<JsConceptsApp />} />
-      <Route path="/class2" element={<Login />} />
+      <Route path="/class2" element={<Login1 />} />
+      <Route path="/class3" element={<Login2 />} />
     </Routes>
   </BrowserRouter>
 );

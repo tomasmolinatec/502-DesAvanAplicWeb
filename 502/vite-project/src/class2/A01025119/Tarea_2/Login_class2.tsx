@@ -2,7 +2,7 @@ import React, { useState, ChangeEvent } from 'react';
 import InputField from './Input.tsx';
 import Button from './Button.tsx';
 
-const Login: React.FC = () => {
+const Login1: React.FC = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
 
@@ -61,4 +61,4 @@ const styles = {
   },
 };
 
-export default Login;
+export default Login1;
