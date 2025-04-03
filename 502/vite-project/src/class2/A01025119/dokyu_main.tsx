@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 import { JsConceptsApp } from '../../class1/A01025119/JSconcepts';
+import Login from './Tarea_2/Login';
 import './main_design.css';
 
 const Student1App = () => (
@@ -13,13 +14,18 @@ const Student1App = () => (
         element={
           <div className="main-container">
             <h1 className="main-title">Pagina principal de Do Kyu (A01025119)</h1>
-            <Link to="/class1" className="class1-button">
+            <Link to="/class1" className="class-button">
               Go to Class 1
+            </Link>
+            <br />
+            <Link to="/class2" className="class-button">
+              Go to Class 2
             </Link>
           </div>
         }
       />
       <Route path="/class1" element={<JsConceptsApp />} />
+      <Route path="/class2" element={<Login />} />
     </Routes>
   </BrowserRouter>
 );
