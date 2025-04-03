@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../../class1/A01025119/main_design.css';
 
 interface InputFieldProps {
   type: string;
@@ -17,25 +18,14 @@ const InputField: React.FC<InputFieldProps> = ({
 }) => {
   return (
     <input
+      className="form-input"
       type={type}
       name={name}
       placeholder={placeholder}
       value={value}
       onChange={onChange}
-      style={styles.input}
     />
   );
-};
-
-const styles = {
-  input: {
-    width: '100%',
-    padding: '10px',
-    marginBottom: '15px',
-    border: '1px solid #ccc',
-    borderRadius: '4px',
-    fontSize: '16px',
-  } as React.CSSProperties,
 };
 
 export default InputField;

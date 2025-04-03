@@ -1,52 +1,104 @@
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
 import { useNavigate } from 'react-router-dom';
 import InputField from '../../class2/A01025119/Tarea_2/Input.tsx';
 import Button from '../../class2/A01025119/Tarea_2/Button.tsx';
 
+type State = {
+  username: string;
+  password: string;
+  error: string;
+  loading: boolean;
+};
+
+type Action =
+  | { type: 'UPDATE_FIELD'; field: string; value: string }
+  | { type: 'SET_ERROR'; message: string }
+  | { type: 'SET_LOADING'; loading: boolean }
+  | { type: 'RESET' };
+
+const initialState: State = {
+  username: '',
+  password: '',
+  error: '',
+  loading: false,
+};
+
+const reducer = (state: State, action: Action): State => {
+  switch (action.type) {
+    case 'UPDATE_FIELD':
+      return { ...state, [action.field]: action.value };
+    case 'SET_ERROR':
+      return { ...state, error: action.message };
+    case 'SET_LOADING':
+      return { ...state, loading: action.loading };
+    case 'RESET':
+      return initialState;
+    default:
+      return state;
+  }
+};
+
 const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [state, dispatch] = useReducer(reducer, initialState);
   const navigate = useNavigate();
+  
+  const validate = (username: string, password: string): string => {
+    if (!username || !password) return 'Please fill all fields';
+    return '';
+  };
 
   const handleSubmit = () => {
-    setLoading(true);
-    setError('');
+  const validationError = validate(state.username, state.password);
 
-    setTimeout(() => {
-      if (username === 'admin' && password === 'password') {
-        console.log('Login successful');
-        navigate('/travel-request', { state: { username } });
-      } else {
-        setError('Invalid username or password');
-      }
-      setLoading(false);
-    }, 1000);
-  };
+  if (validationError) {
+    dispatch({ type: 'SET_ERROR', message: validationError });
+    return;
+  }
+
+  dispatch({ type: 'SET_LOADING', loading: true });
+  dispatch({ type: 'SET_ERROR', message: '' });
+
+  setTimeout(() => {
+    if (state.username === 'admin' && state.password === 'password') {
+      console.log('Login successful');
+      navigate('/travel-request', { state: { username: state.username } });
+    } else {
+      dispatch({ type: 'SET_ERROR', message: 'Invalid username or password' });
+    }
+
+    dispatch({ type: 'SET_LOADING', loading: false });
+  }, 1000);
+};
 
   return (
     <div style={styles.container}>
       <h1>Login</h1>
-      {error && <p style={styles.error}>{error}</p>}
+      {state.error && <p style={styles.error}>{state.error}</p>}
 
       <InputField
         type="text"
         name="username"
         placeholder="Username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
+        value={state.username}
+        onChange={(e) =>
+          dispatch({ type: 'UPDATE_FIELD', field: 'username', value: e.target.value })
+        }
       />
 
       <InputField
         type="password"
         name="password"
         placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        value={state.password}
+        onChange={(e) =>
+          dispatch({ type: 'UPDATE_FIELD', field: 'password', value: e.target.value })
+        }
       />
 
-      <Button label={loading ? 'Loading...' : 'Submit'} onClick={handleSubmit} />
+      <Button
+        label={state.loading ? 'Loading...' : 'Submit'}
+        onClick={handleSubmit}
+      />
     </div>
   );
 };

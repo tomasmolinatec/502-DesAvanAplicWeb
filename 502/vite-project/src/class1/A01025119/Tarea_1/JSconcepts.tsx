@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { ArrowFunction } from './Tarea_1/ArrowFunction.tsx';
-import { Destructuring } from './Tarea_1/Destruction.tsx';
-import { TemplateLiteral } from './Tarea_1/TemplateLiteral.tsx';
-import { GreetExample } from './Tarea_1/GreetExample.tsx';
+import { ArrowFunction } from './ArrowFunction.tsx';
+import { Destructuring } from './Destruction.tsx';
+import { TemplateLiteral } from './TemplateLiteral.tsx';
+import { GreetExample } from './GreetExample.tsx';
 
 import './JsConcepts.css';
 

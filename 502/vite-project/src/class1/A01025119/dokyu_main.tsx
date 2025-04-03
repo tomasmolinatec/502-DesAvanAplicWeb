@@ -2,9 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
-import { JsConceptsApp } from '../../class1/A01025119/JSconcepts';
-import Login1 from './Tarea_2/Login_class2';
-import Login2 from '../../class3/A01025119/Login_class3';
+import { JsConceptsApp } from './Tarea_1/JSconcepts';
+import TravelRequestsPage from '../../class2/A01025119/travel_page';
+import Login from '../../class3/A01025119/Login_class3';
+import TravelRequestForm from '../../class3/A01025119/Travel_request';
 import './main_design.css';
 
 const Student1App = () => (
@@ -16,22 +17,23 @@ const Student1App = () => (
           <div className="main-container">
             <h1 className="main-title">Pagina principal de Do Kyu (A01025119)</h1>
             <Link to="/class1" className="class-button">
-              Go to Class 1
+              Class 1 Homework
             </Link>
             <br />
             <Link to="/class2" className="class-button">
-              Go to Class 2
+              Class 2 Homework
             </Link>
             <br />
             <Link to="/class3" className="class-button">
-              Go to Class 3
+              Class 3 Homework
             </Link>
           </div>
         }
       />
       <Route path="/class1" element={<JsConceptsApp />} />
-      <Route path="/class2" element={<Login1 />} />
-      <Route path="/class3" element={<Login2 />} />
+      <Route path="/class2" element={<TravelRequestsPage />} />
+      <Route path="/class3" element={<Login />} />
+      <Route path="/travel-request" element={<TravelRequestForm />} />
     </Routes>
   </BrowserRouter>
 );
