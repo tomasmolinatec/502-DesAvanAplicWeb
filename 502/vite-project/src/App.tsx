@@ -26,9 +26,7 @@ function App() {
         </p>
       </div>
       <a href="./class2/A01781442/index.html">
-      <button>
      Ir a Login
-      </button>
       </a>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
