@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../../class2/A01025119/Button.tsx'
 
 const Counter: React.FC = () => {
   const [count, setCount] = useState(0);
@@ -7,8 +8,8 @@ const Counter: React.FC = () => {
     <div style={styles.container}>
       <h3>Trip Counter</h3>
       <p>Count: {count}</p>
-      <button onClick={() => setCount(count + 1)} style={styles.button}>Increment</button>
-      <button onClick={() => setCount(count - 1)} style={styles.button}>Decrement</button>
+      <button onClick={() => setCount(count + 1)} className="main-button" >Increment</button>
+      <button onClick={() => setCount(count - 1)} className="main-button" >Decrement</button>
     </div>
   );
 };

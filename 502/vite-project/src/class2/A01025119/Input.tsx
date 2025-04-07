@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../../class1/A01025119/main_design.css';
+import '../../class1/A01025119/webpage/main_design.css';
 
 interface InputFieldProps {
   type: string;

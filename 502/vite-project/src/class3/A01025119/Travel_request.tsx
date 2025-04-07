@@ -1,7 +1,7 @@
 import React, { useReducer, ChangeEvent } from 'react';
 import { useLocation } from 'react-router-dom';
-import InputField from '../../class2/A01025119/Tarea_2/Input.tsx';
-import Button from '../../class2/A01025119/Tarea_2/Button.tsx';
+import InputField from '../../class2/A01025119/Input.tsx';
+import Button from '../../class2/A01025119/Button.tsx';
 import Counter from './counter.tsx';
 import './Travel_desing.css';
 

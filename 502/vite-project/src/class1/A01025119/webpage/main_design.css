@@ -32,19 +32,6 @@ html, body, #A01025119-root {
   margin-bottom: 1.5rem;
 }
 
-/* Button styling */
-.class-button {
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  font-weight: bold;
-  background-color: #3b82f6;
-  color: #ffffff;
-  border: none;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  text-decoration: none;
-}
-
 input[type="text"],
 input[type="date"],
 textarea {
@@ -72,3 +59,22 @@ textarea {
   outline: none;
   box-sizing: border-box;
 }
+
+.main-button {
+  display: inline-block;
+  padding: 12px 20px;
+  background-color: #fa1f3d;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  margin-top: 16px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.main-button:hover {
+  background-color: #d11a35;
+  color: white;
+}
+
