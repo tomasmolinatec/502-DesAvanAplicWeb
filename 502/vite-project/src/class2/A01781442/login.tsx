@@ -12,7 +12,7 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="Center">
       <h1>Login</h1>
       <InputField
         type="text"
@@ -27,6 +27,10 @@ const Login: React.FC = () => {
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
       />
       <Button label="Submit" onClick={handleSubmit} />
+      <a href='/src/class1/A01781442/index.html'>
+      <br /><br />
+      Regresar a Menú
+      </a>
     </div>
   );
 };
