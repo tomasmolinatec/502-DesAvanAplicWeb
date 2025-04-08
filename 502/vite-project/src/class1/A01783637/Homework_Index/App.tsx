@@ -11,6 +11,10 @@ const  App=()=>{
         <div>
         <a href="/src/class2/A01783637/index.html"> ~HomeWork2~ </a>
         </div>
+        <br />
+        <div>
+        <a href="/src/class3/A01783637/index.html"> ~HomeWork3~ </a>
+        </div>
         </>
     );
 };
