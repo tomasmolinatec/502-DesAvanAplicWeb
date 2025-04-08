@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -21,6 +22,12 @@ function App() {
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
+
+        {/* Botón de navegación al login */}
+        <Link to="/login">
+          <button style={{ marginTop: '1rem' }}>Ir al Login</button>
+        </Link>
+
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
