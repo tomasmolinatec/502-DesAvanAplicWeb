@@ -22,7 +22,7 @@ function App() {
           count is {count}
         </button>
         <div>
-        <a href='/src/class1/A01784008/index.html' target="_blank" rel="noopener noreferrer">
+        <a href='/src/class2/A01784008/index.html' target="_blank" rel="noopener noreferrer">
           Leon Blanga Hasbani A01784008
         </a></div>
       </div>

@@ -16,7 +16,7 @@ const ES6Hw= ()=>{
 
   return(
     <>
-    <h1>Tarea 1</h1>
+    <h1>Clase 1</h1>
     <h2>Advanced JavaScript Concepts (ES6+) Review</h2>
     <p>Destructuring, Template Literals, Arrow Functions</p>
     <div>
