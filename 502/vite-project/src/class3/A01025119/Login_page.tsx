@@ -1,48 +1,16 @@
-import { useReducer } from 'react';
+import { useState, useEffect } from 'react';
 import InputField from '../../class2/A01025119/Input.tsx';
 import Button from '../../class2/A01025119/Button.tsx';
-
-type State = {
-  username: string;
-  password: string;
-  error: string;
-  loading: boolean;
-};
-
-type Action =
-  | { type: 'UPDATE_FIELD'; field: string; value: string }
-  | { type: 'SET_ERROR'; message: string }
-  | { type: 'SET_LOADING'; loading: boolean }
-  | { type: 'RESET' };
 
 type Props = {
   onLoginSuccess: (username: string) => void;
 };
 
-const initialState: State = {
-  username: '',
-  password: '',
-  error: '',
-  loading: false,
-};
-
-const reducer = (state: State, action: Action): State => {
-  switch (action.type) {
-    case 'UPDATE_FIELD':
-      return { ...state, [action.field]: action.value };
-    case 'SET_ERROR':
-      return { ...state, error: action.message };
-    case 'SET_LOADING':
-      return { ...state, loading: action.loading };
-    case 'RESET':
-      return initialState;
-    default:
-      return state;
-  }
-};
-
 const Login: React.FC<Props> = ({ onLoginSuccess }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const validate = (username: string, password: string): string => {
     if (!username || !password) return 'Please fill all fields';
@@ -50,57 +18,57 @@ const Login: React.FC<Props> = ({ onLoginSuccess }) => {
   };
 
   const handleSubmit = () => {
-    const validationError = validate(state.username, state.password);
+    const validationError = validate(username, password);
 
     if (validationError) {
-      dispatch({ type: 'SET_ERROR', message: validationError });
+      setError(validationError);
       return;
     }
 
-    dispatch({ type: 'SET_LOADING', loading: true });
-    dispatch({ type: 'SET_ERROR', message: '' });
+    setLoading(true);
+    setError('');
 
     setTimeout(() => {
-      if (state.username === 'admin' && state.password === 'password') {
+      if (username === 'admin' && password === 'password') {
         console.log('Login successful');
         alert('Login successful');
-        onLoginSuccess(state.username);
-  
+        onLoginSuccess(username);
       } else {
-        dispatch({ type: 'SET_ERROR', message: 'Invalid username or password' });
+        setError('Invalid username or password');
       }
-
-      dispatch({ type: 'SET_LOADING', loading: false });
+      setLoading(false);
     }, 1000);
   };
+
+  useEffect(() => {
+    if (error) {
+      console.warn('Login error:', error);
+    }
+  }, [error]);
 
   return (
     <div style={styles.container}>
       <h1>Login</h1>
-      {state.error && <p style={styles.error}>{state.error}</p>}
+      {error && <p style={styles.error}>{error}</p>}
 
       <InputField
         type="text"
         name="username"
         placeholder="Username"
-        value={state.username}
-        onChange={(e) =>
-          dispatch({ type: 'UPDATE_FIELD', field: 'username', value: e.target.value })
-        }
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
       />
 
       <InputField
         type="password"
         name="password"
         placeholder="Password"
-        value={state.password}
-        onChange={(e) =>
-          dispatch({ type: 'UPDATE_FIELD', field: 'password', value: e.target.value })
-        }
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
       />
 
       <Button
-        label={state.loading ? 'Loading...' : 'Submit'}
+        label={loading ? 'Loading...' : 'Submit'}
         onClick={handleSubmit}
       />
     </div>
