@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import LoginForm from './components/LoginForm';
+import TravelForm from './components/TravelForm';
+import Navbar from './components/NavbarLB';
 import './App.css';
 
 export default function App() {
@@ -7,7 +9,8 @@ export default function App() {
 
   return (
     <div className="app-container">
-      <h1>Login para acceso a las tareas</h1>
+      <Navbar />
+      <h1>Login para solicitante de viaje</h1>
       <h3>ctrl + a para ver tus credenciales</h3>
       <div className='credenciales'>
         <p>Usuario = ivan</p>
@@ -16,20 +19,11 @@ export default function App() {
       {!isLoggedIn ? (
         <LoginForm onLoginSuccess={() => setIsLoggedIn(true)} />
       ) : (
-        <TaskMenu />
+        <>
+          <h2>Bienvenido Ivan!</h2>
+          <TravelForm />
+        </>
       )}
-    </div>
-  );
-}
-
-function TaskMenu() {
-  return (
-    <div className="menu">
-      <h2>Bienvenido, Ivan</h2>
-      <ul>
-        <li><a href="/src/class1/A01784008/index.html">Clase 1: ES6+</a></li>
-        <li><a href="/src/class2/A01784008/index.html">Clase 2: Login</a></li>
-      </ul>
     </div>
   );
 }
