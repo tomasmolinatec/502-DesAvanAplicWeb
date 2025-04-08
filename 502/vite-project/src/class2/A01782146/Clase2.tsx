@@ -6,61 +6,60 @@ interface Clase2Props {
 }
 
 const Clase2 = ({ onLoginSuccess }: Clase2Props) => {
-  // Static credentials that work:
-  // Username: admin
-  // Password: admin123
+  // Credenciales estáticas que funcionan:
+  // Usuario: admin
+  // Contraseña: admin123
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Username:", username);
-    console.log("Password:", password);
+    console.log("Usuario:", username);
+    console.log("Contraseña:", password);
     if (username === "admin" && password === "admin123") {
-      alert("Login successful!");
       // Invoca la función para cambiar de pantalla
       onLoginSuccess();
     } else {
-      alert("Invalid credentials. Please try again.");
+      alert("Credenciales inválidas. Por favor, inténtalo de nuevo.");
     }
   };
 
   return (
     <div style={{ padding: "20px" }}>
-      <h1>Login (and Class2 Work)</h1>
+      <h1>Iniciar sesión (Clase2)</h1>
       {/* Información de credenciales estáticas para pruebas */}
       <p>
-        <strong>Static credentials:</strong> Username: <em>admin</em>, Password:{" "}
-        <em>admin123</em>
+        <strong>Credenciales estáticas:</strong> Usuario: <em>admin</em>,
+        Contraseña: <em>admin123</em>
       </p>
       <form onSubmit={handleSubmit}>
         <div style={{ marginBottom: "10px" }}>
           <label>
-            Username:{" "}
+            Usuario:{" "}
             <input
               type="text"
               value={username}
-              placeholder="Enter username"
+              placeholder="Ingresa el usuario"
               onChange={(e) => setUsername(e.target.value)}
             />
           </label>
         </div>
         <div style={{ marginBottom: "10px" }}>
           <label>
-            Password:{" "}
+            Contraseña:{" "}
             <input
               type="password"
               value={password}
-              placeholder="Enter password"
+              placeholder="Ingresa la contraseña"
               onChange={(e) => setPassword(e.target.value)}
             />
           </label>
         </div>
-        <button type="submit">Login</button>
+        <button type="submit">Iniciar sesión</button>
       </form>
       <br />
-      <a href="/">Regresar al menú</a>
+      <a href="/">Regresar a la página principal</a>
     </div>
   );
 };
