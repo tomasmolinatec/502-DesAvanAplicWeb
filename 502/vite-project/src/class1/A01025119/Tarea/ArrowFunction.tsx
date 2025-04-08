@@ -5,7 +5,7 @@ export const ArrowFunction: React.FC = () => {
   
     useEffect(() => {
       const objFixed = {
-        name: "Alice",
+        name: "Do Kyu",
         greet: function () {
           setTimeout(() => {
             const msg = `Hello, ${this.name}`;

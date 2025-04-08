@@ -1,9 +1,8 @@
 import React, { useReducer, ChangeEvent } from 'react';
-import { useLocation } from 'react-router-dom';
 import InputField from '../../class2/A01025119/Input.tsx';
 import Button from '../../class2/A01025119/Button.tsx';
 import Counter from './counter.tsx';
-import './Travel_desing.css';
+import '../../class2/A01025119/travel_design.css';
 
 const initialState = {
   destination: '',
@@ -18,6 +17,10 @@ type Action = {
   value: string;
 };
 
+type Props = {
+  username?: string;
+};
+
 const reducer = (state: typeof initialState, action: Action): typeof initialState => {
   switch (action.type) {
     case 'UPDATE_FIELD':
@@ -27,10 +30,8 @@ const reducer = (state: typeof initialState, action: Action): typeof initialStat
   }
 };
 
-const TravelRequestForm: React.FC = () => {
+const TravelRequestForm: React.FC<Props> = ({ username }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const location = useLocation();
-  const email = location.state?.email || location.state?.username;
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -39,15 +40,15 @@ const TravelRequestForm: React.FC = () => {
 
   const handleSubmit = () => {
     console.log('Travel Request:', state);
-    alert('Travel request submitted!');
+    alert(`Travel request submitted by ${username || 'unknown user'}!`);
   };
 
   return (
     <div className="main-container">
       <div className="form-container">
         <h1>Travel Request Form</h1>
-        {email && <p>Logged in as: <strong>{email}</strong></p>}
-  
+        {username && <p>Logged in as: <strong>{username}</strong></p>}
+
         <InputField
           type="text"
           name="destination"
@@ -55,7 +56,7 @@ const TravelRequestForm: React.FC = () => {
           value={state.destination}
           onChange={handleChange}
         />
-  
+
         <InputField
           type="date"
           name="startDate"
@@ -63,7 +64,7 @@ const TravelRequestForm: React.FC = () => {
           value={state.startDate}
           onChange={handleChange}
         />
-  
+
         <InputField
           type="date"
           name="endDate"
@@ -71,7 +72,7 @@ const TravelRequestForm: React.FC = () => {
           value={state.endDate}
           onChange={handleChange}
         />
-  
+
         <textarea
           className="form-input"
           name="purpose"
@@ -79,13 +80,13 @@ const TravelRequestForm: React.FC = () => {
           value={state.purpose}
           onChange={handleChange}
         />
-  
+
         <Button label="Submit" onClick={handleSubmit} />
-  
+
         <Counter />
       </div>
     </div>
-  );  
+  );
 };
 
 export default TravelRequestForm;

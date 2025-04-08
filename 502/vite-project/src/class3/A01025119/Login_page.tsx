@@ -1,5 +1,4 @@
 import { useReducer } from 'react';
-import { useNavigate } from 'react-router-dom';
 import InputField from '../../class2/A01025119/Input.tsx';
 import Button from '../../class2/A01025119/Button.tsx';
 
@@ -15,6 +14,10 @@ type Action =
   | { type: 'SET_ERROR'; message: string }
   | { type: 'SET_LOADING'; loading: boolean }
   | { type: 'RESET' };
+
+type Props = {
+  onLoginSuccess: (username: string) => void;
+};
 
 const initialState: State = {
   username: '',
@@ -38,37 +41,38 @@ const reducer = (state: State, action: Action): State => {
   }
 };
 
-const Login = () => {
+const Login: React.FC<Props> = ({ onLoginSuccess }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const navigate = useNavigate();
-  
+
   const validate = (username: string, password: string): string => {
     if (!username || !password) return 'Please fill all fields';
     return '';
   };
 
   const handleSubmit = () => {
-  const validationError = validate(state.username, state.password);
+    const validationError = validate(state.username, state.password);
 
-  if (validationError) {
-    dispatch({ type: 'SET_ERROR', message: validationError });
-    return;
-  }
-
-  dispatch({ type: 'SET_LOADING', loading: true });
-  dispatch({ type: 'SET_ERROR', message: '' });
-
-  setTimeout(() => {
-    if (state.username === 'admin' && state.password === 'password') {
-      console.log('Login successful');
-      navigate('/travel-request', { state: { username: state.username } });
-    } else {
-      dispatch({ type: 'SET_ERROR', message: 'Invalid username or password' });
+    if (validationError) {
+      dispatch({ type: 'SET_ERROR', message: validationError });
+      return;
     }
 
-    dispatch({ type: 'SET_LOADING', loading: false });
-  }, 1000);
-};
+    dispatch({ type: 'SET_LOADING', loading: true });
+    dispatch({ type: 'SET_ERROR', message: '' });
+
+    setTimeout(() => {
+      if (state.username === 'admin' && state.password === 'password') {
+        console.log('Login successful');
+        alert('Login successful');
+        onLoginSuccess(state.username);
+  
+      } else {
+        dispatch({ type: 'SET_ERROR', message: 'Invalid username or password' });
+      }
+
+      dispatch({ type: 'SET_LOADING', loading: false });
+    }, 1000);
+  };
 
   return (
     <div style={styles.container}>

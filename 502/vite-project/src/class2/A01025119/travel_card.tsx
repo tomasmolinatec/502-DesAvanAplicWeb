@@ -1,45 +1,66 @@
-import React from 'react';
+import React, { useState } from 'react';
+import InputField from './Input.tsx';
+import Button from './Button.tsx';
+import './travel_design.css';
 
-interface TravelRequestCardProps {
-  title: string;
-  description: string;
-  date: string;
-  onClick?: () => void;
-}
+const TravelRequest: React.FC = () => {
+  const [destination, setDestination] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const [purpose, setPurpose] = useState('');
 
-const TravelRequestCard: React.FC<TravelRequestCardProps> = ({ title, description, date, onClick }) => {
+  const handleSubmit = () => {
+    const travelData = {
+      destination,
+      startDate,
+      endDate,
+      purpose,
+    };
+    console.log('Travel Request:', travelData);
+    alert('Travel request submitted!');
+  };
+
   return (
-    <div style={styles.card} onClick={onClick}>
-      <h3 style={styles.title}>{title}</h3>
-      <p style={styles.description}>{description}</p>
-      <p style={styles.date}>📅 {date}</p>
+    <div className="main-container">
+      <div className="form-container">
+        <h1>Travel Request Form</h1>
+
+        <InputField
+          type="text"
+          name="destination"
+          placeholder="Destination"
+          value={destination}
+          onChange={(e) => setDestination(e.target.value)}
+        />
+
+        <InputField
+          type="date"
+          name="startDate"
+          placeholder="Start Date"
+          value={startDate}
+          onChange={(e) => setStartDate(e.target.value)}
+        />
+
+        <InputField
+          type="date"
+          name="endDate"
+          placeholder="End Date"
+          value={endDate}
+          onChange={(e) => setEndDate(e.target.value)}
+        />
+
+        <textarea
+          className="form-input"
+          name="purpose"
+          placeholder="Purpose"
+          value={purpose}
+          onChange={(e) => setPurpose(e.target.value)}
+        />
+
+        <Button label="Submit" onClick={handleSubmit} />
+      </div>
     </div>
   );
 };
 
-const styles = {
-  card: {
-    backgroundColor: '#1e1e1e',
-    border: '1px solid #333',
-    borderRadius: '12px',
-    padding: '16px',
-    marginBottom: '16px',
-    color: '#fff',
-    cursor: 'pointer',
-    transition: 'transform 0.2s ease',
-  },
-  title: {
-    fontSize: '20px',
-    marginBottom: '8px',
-  },
-  description: {
-    fontSize: '16px',
-    marginBottom: '6px',
-  },
-  date: {
-    fontSize: '14px',
-    opacity: 0.8,
-  },
-};
-
-export default TravelRequestCard;
+export default TravelRequest;

@@ -8,7 +8,7 @@ export const TemplateLiteral: React.FC = () => {
     });
   
     useEffect(() => {
-      const name = "Charlie";
+      const name = "Do Kyu";
       const greeting = `Hello, ${name}!`;
   
       const message = `
