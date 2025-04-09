@@ -2,18 +2,14 @@ import '../../index.css'
 const Arfunc= ()=>{
 
   const details={name:"Rafael",lastName:"Blanga"};
-  //Arrow function
   const Greet=()=>{
-    //Destructuring
     const {name,lastName}= details;
-    //Template Literals
     return `Hello ${name} ${lastName} !!`
   }
   return(
     <>
     <div className="Center">
-    <h1>Homework1</h1>
-    <p>Simple greeting that uses ES6+ concepts:</p>
+    <h1>Tarea 1, greeting con ES6+</h1>
     <div>
       {Greet()}
     </div>
