@@ -1,19 +1,40 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Clase1 = () => {
-  // Versión "antes"
+  // Función "antes"
   function greetBefore(user: { name: string; age: number }) {
-    return "Hello, " + user.name + "! You are " + user.age + " years old.";
+    return "Hola, " + user.name + "! Tienes " + user.age + " años.";
   }
 
-  // Versión "después" usando template literals, destructuring y arrow function
+  // Función "después" usando template literals, destructuring y arrow function
   const greetAfter = ({ name, age }: { name: string; age: number }) =>
-    `Hello, ${name}! You are ${age} years old.`;
+    `Hola, ${name}! Tienes ${age} años.`;
 
-  const [name, setName] = useState<string>("John");
+  const [name, setName] = useState<string>("Juan");
   const [age, setAge] = useState<number>(25);
+  const [apiData, setApiData] = useState<any>(null);
 
   const user = { name, age };
+
+  // Se utiliza useEffect para obtener datos de la API simulada al montar el componente
+  useEffect(() => {
+    const fetchMockData = async () => {
+      try {
+        const response = await fetch(
+          "https://jsonplaceholder.typicode.com/todos/123"
+        );
+        if (!response.ok) {
+          throw new Error(`Error HTTP! Estado: ${response.status}`);
+        }
+        const data = await response.json();
+        setApiData(data);
+      } catch (error) {
+        console.error(`Error al obtener los datos: ${error}`);
+      }
+    };
+
+    fetchMockData();
+  }, []);
 
   return (
     <div
@@ -54,7 +75,7 @@ const Clase1 = () => {
       <h2>Antes</h2>
       <pre>
         {`function greet(user) {
-  return "Hello, " + user.name + "! You are " + user.age + " years old.";
+  return "Hola, " + user.name + "! Tienes " + user.age + " años.";
 }`}
       </pre>
       <p>
@@ -62,15 +83,23 @@ const Clase1 = () => {
       </p>
 
       <h2>
-        Después (using template literals + destructuring + arrow functions)
+        Después (usando template literals + destructuring + arrow functions)
       </h2>
       <pre>
-        {`const greet = ({ name, age }) => \`Hello, \${name}! You are \${age} years old.\`;`}
+        {`const greet = ({ name, age }) => \`Hola, \${name}! Tienes \${age} años.\`;`}
       </pre>
       <p>
         <strong>Resultado:</strong> {greetAfter(user)}
       </p>
 
+      <div style={{ marginTop: "20px" }}>
+        <h2>Datos obtenidos de la API de mock utilizando fetch:</h2>
+        {apiData ? (
+          <pre>{JSON.stringify(apiData, null, 2)}</pre>
+        ) : (
+          <p>Cargando datos...</p>
+        )}
+      </div>
       <button
         onClick={() => {
           window.location.href = "/src/class2/A01782146/index.html";
