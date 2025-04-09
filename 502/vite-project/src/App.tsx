@@ -30,8 +30,8 @@ function App() {
       {/* Botón para navegar a la otra aplicación */}
       <a
         href="/src/class2/A01782146/index.html"
-        id="marcosdayan"
-        className="marcosdayan"
+        id="gabrieledid"
+        className="gabrieledid"
       >
         Ir a trabajos de Gabriel Edid A01782146
       </a>

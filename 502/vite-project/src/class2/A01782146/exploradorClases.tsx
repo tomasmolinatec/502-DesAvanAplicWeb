@@ -1,13 +1,26 @@
-import { useState } from "react";
 import "/src/App.css";
 
 const ExploradorClases = () => {
-  const [selectedClass, setSelectedClass] = useState<string | null>(null);
   const clases = ["Clase 1", "Clase 3", "Clase 4"];
 
   const handleClassSelect = (className: string) => {
-    setSelectedClass(className);
-    alert(`Clase seleccionada: ${className}`);
+    // Redirige a una ruta determinada según la clase
+    if (className === "Clase 1") {
+      window.location.href = "/src/class1/A01782146/index.html";
+    } else if (className === "Clase 3") {
+      window.location.href = "/src/class3/A01782146/index.html";
+    } else if (className === "Clase 4") {
+      window.location.href = "/src/class4/A01782146/index.html";
+    }
+  };
+
+  const handleLogout = () => {
+    // Eliminar el flag de login en el localStorage
+    localStorage.removeItem("loggedIn");
+    console.log("loggedIn after remove:", localStorage.getItem("loggedIn")); // Debería imprimir null
+
+    // Redirige a la ruta del login
+    window.location.href = "/src/class2/A01782146/index.html";
   };
 
   return (
@@ -40,13 +53,21 @@ const ExploradorClases = () => {
           </button>
         ))}
       </div>
-      {selectedClass && (
-        <div style={{ marginTop: "20px" }}>
-          <p>
-            Has seleccionado: <strong>{selectedClass}</strong>
-          </p>
-        </div>
-      )}
+      {/* Botón para regresar al login */}
+      <button
+        onClick={handleLogout}
+        style={{
+          padding: "10px 20px",
+          border: "none",
+          borderRadius: "4px",
+          backgroundColor: "#ef4444",
+          color: "#fff",
+          cursor: "pointer",
+          marginTop: "30px",
+        }}
+      >
+        Regresar al login
+      </button>
     </div>
   );
 };
