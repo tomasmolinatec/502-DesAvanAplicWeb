@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import './styles.css';
+
 
 function Login2() {
     const [username, setUsername] = useState("");
@@ -50,16 +52,26 @@ function Dashboard() {
     return (
         <div>
             <h1>Dashboard</h1>
-            <ul>
-                <li>
-                    <a href="/src/class2/A01781321/login,jsx">Ir al login de class2</a>
-                </li>
-                <li>
-                    <a href="/src/class1/A01781321/tarea1.html">
-                        Ir al código de class1 (placeholder)
-                    </a>
-                </li>
-            </ul>
+            <div style={{ marginBottom: "20px" }}>
+                <h2>Navigation</h2>
+                <ul>
+                    <li>
+                        <button onClick={() => (window.location.href = "/src/class2/A01781321/login.jsx")}>
+                            Class 2 Login
+                        </button>
+                    </li>
+                    <li>
+                        <button onClick={() => (window.location.href = "/src/class1/A01781321/tarea1.html")}>
+                            Class 1 Code
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <div style={{ marginBottom: "20px" }}>
+                <h2>User Info</h2>
+                <p>Welcome, andresoide2000!</p>
+                <button onClick={() => window.location.reload()}>Log Out</button>
+            </div>
         </div>
     );
 }
