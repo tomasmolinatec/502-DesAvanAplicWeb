@@ -55,7 +55,7 @@ function Dashboard() {
                     <a href="/src/class2/A01781321/login,jsx">Ir al login de class2</a>
                 </li>
                 <li>
-                    <a href="#class1-placeholder">
+                    <a href="/src/class1/A01781321/tarea1.html">
                         Ir al código de class1 (placeholder)
                     </a>
                 </li>
