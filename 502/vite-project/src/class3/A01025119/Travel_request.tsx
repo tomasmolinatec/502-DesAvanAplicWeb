@@ -1,47 +1,54 @@
-import React, { useReducer, ChangeEvent } from 'react';
+import React, { useState, useEffect, ChangeEvent } from 'react';
 import InputField from '../../class2/A01025119/Input.tsx';
 import Button from '../../class2/A01025119/Button.tsx';
 import Counter from './counter.tsx';
 import '../../class2/A01025119/travel_design.css';
 
-const initialState = {
-  destination: '',
-  startDate: '',
-  endDate: '',
-  purpose: '',
-};
-
-type Action = {
-  type: 'UPDATE_FIELD';
-  field: string;
-  value: string;
-};
-
 type Props = {
   username?: string;
 };
 
-const reducer = (state: typeof initialState, action: Action): typeof initialState => {
-  switch (action.type) {
-    case 'UPDATE_FIELD':
-      return { ...state, [action.field]: action.value };
-    default:
-      return state;
-  }
-};
-
 const TravelRequestForm: React.FC<Props> = ({ username }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [destination, setDestination] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const [purpose, setPurpose] = useState('');
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    dispatch({ type: 'UPDATE_FIELD', field: name, value });
+
+    switch (name) {
+      case 'destination':
+        setDestination(value);
+        break;
+      case 'startDate':
+        setStartDate(value);
+        break;
+      case 'endDate':
+        setEndDate(value);
+        break;
+      case 'purpose':
+        setPurpose(value);
+        break;
+      default:
+        break;
+    }
   };
 
   const handleSubmit = () => {
-    console.log('Travel Request:', state);
+    const travelData = {
+      destination,
+      startDate,
+      endDate,
+      purpose,
+    };
+    console.log('Travel Request:', travelData);
     alert(`Travel request submitted by ${username || 'unknown user'}!`);
   };
+
+  useEffect(() => {
+    console.log('Form updated:', { destination, startDate, endDate, purpose });
+  }, [destination, startDate, endDate, purpose]);
 
   return (
     <div className="main-container">
@@ -53,7 +60,7 @@ const TravelRequestForm: React.FC<Props> = ({ username }) => {
           type="text"
           name="destination"
           placeholder="Destination"
-          value={state.destination}
+          value={destination}
           onChange={handleChange}
         />
 
@@ -61,7 +68,7 @@ const TravelRequestForm: React.FC<Props> = ({ username }) => {
           type="date"
           name="startDate"
           placeholder="Start Date"
-          value={state.startDate}
+          value={startDate}
           onChange={handleChange}
         />
 
@@ -69,7 +76,7 @@ const TravelRequestForm: React.FC<Props> = ({ username }) => {
           type="date"
           name="endDate"
           placeholder="End Date"
-          value={state.endDate}
+          value={endDate}
           onChange={handleChange}
         />
 
@@ -77,7 +84,7 @@ const TravelRequestForm: React.FC<Props> = ({ username }) => {
           className="form-input"
           name="purpose"
           placeholder="Purpose"
-          value={state.purpose}
+          value={purpose}
           onChange={handleChange}
         />
 

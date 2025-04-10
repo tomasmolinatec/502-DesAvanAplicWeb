@@ -4,6 +4,7 @@ import TravelRequests from '../../../class2/A01025119/travel_card';
 import LoginEx from '../../../class2/A01025119/login_exp';
 import Login from '../../../class3/A01025119/Login_page';
 import TravelRequestForm from '../../../class3/A01025119/Travel_request';
+import CustomLogin from '../../../class4/A01025119/customLogin';
 import './main_design.css';
 import '../../../App.css';
 
@@ -13,7 +14,8 @@ type Page =
   | 'class2-login'
   | 'class2-travel'
   | 'class3'
-  | 'travel-request';
+  | 'travel-request'
+  | 'class4';
 
 export const A01025119 = () => {
   const [currentPage, setCurrentPage] = useState<Page>('home');
@@ -29,7 +31,8 @@ export const A01025119 = () => {
         hash === 'class2-login' ||
         hash === 'class2-travel' ||
         hash === 'class3' ||
-        hash === 'travel-request'
+        hash === 'travel-request' ||
+        hash === 'class4'
       ) {
         setCurrentPage(hash);
       } else {
@@ -65,6 +68,8 @@ export const A01025119 = () => {
         return <Login onLoginSuccess={handleLoginSuccess} />;
       case 'travel-request':
         return <TravelRequestForm username={loggedInUser ?? ''} />;
+      case 'class4':
+        return <CustomLogin />;
       default:
         return (
           <div className="main-container">
@@ -83,6 +88,10 @@ export const A01025119 = () => {
             <br />
             <button className="main-button" onClick={() => navigateTo('class3')}>
               Class 3 Login Authentication
+            </button>
+            <br />
+            <button className="main-button" onClick={() => navigateTo('class4')}>
+              Class 4 Custom Login
             </button>
           </div>
         );
