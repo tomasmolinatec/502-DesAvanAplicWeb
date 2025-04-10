@@ -285,3 +285,31 @@ body {
   gap: 1rem;
   margin-bottom: 2rem;
 }
+
+.CounterBlock {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.CounterTitle {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.CounterValue {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.CounterButtons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.CounterButton {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+}

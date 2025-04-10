@@ -1,9 +1,7 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useState } from 'react';
 import InputField from '../../class2/A01781442/form.tsx';
 import Button from '../../class2/A01781442/button.tsx';
 import '/src/class1/A01781442/index.css';
-
-
 
 type TravelState = {
   destination: string;
@@ -93,8 +91,6 @@ const TravelRequestForm: React.FC = () => {
   );
 };
 
-
-
 type LoginState = {
   username: string;
   password: string;
@@ -134,6 +130,7 @@ const loginReducer = (state: LoginState, action: LoginAction): LoginState => {
 
 const Login: React.FC = () => {
   const [state, dispatch] = useReducer(loginReducer, loginInitialState);
+  const [count, setCount] = useState(0);
 
   const handleChange = (field: 'username' | 'password', value: string) => {
     dispatch({ type: 'UPDATE_FIELD', field, value });
@@ -158,8 +155,8 @@ const Login: React.FC = () => {
         <h5>Ingresa tu usuario y contraseña para solicitar un viaje <br /><br /> usr: admin <br /><br /> password: password</h5>
         <a href="/src/class1/A01781442/index.html">Regresar a Menú</a>
 
-        {state.error && <p style={{ color: 'red', marginTop: '1rem' }}>{state.error}</p>}
-        {state.success && <p style={{ color: 'green', marginTop: '1rem' }}>Login successful!</p>}
+        {state.error && <p className="LoginError">{state.error}</p>}
+        {state.success && <p className="LoginSuccess">Login successful!</p>}
 
         <div className="LoginForm">
           <InputField
@@ -183,7 +180,21 @@ const Login: React.FC = () => {
         </div>
       </div>
 
-      {state.success && <TravelRequestForm />}
+      {state.success && (
+        <>
+          <TravelRequestForm />
+
+          <div className="CounterBlock">
+            <h2 className="CounterTitle">Contador</h2>
+            <p className="CounterValue">{count}</p>
+            <div className="CounterButtons">
+              <button className="CounterButton" onClick={() => setCount(count + 1)}>+1</button>
+              <button className="CounterButton" onClick={() => setCount(count - 1)}>-1</button>
+              <button className="CounterButton" onClick={() => setCount(0)}>Reset</button>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 };
