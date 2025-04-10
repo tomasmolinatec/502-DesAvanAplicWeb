@@ -92,7 +92,7 @@ const Dashboard: React.FC<DashboardProps> = ({ username }) => {
     };
 
     // Se utiliza la función greet para demostrar su uso (con datos de ejemplo)
-    const sampleUser: User = { name: "Carlos", age: 25 };
+    const sampleUser: User = { name: username, age: 25 };
 
     return (
         <div style={{ textAlign: 'center' }}>
