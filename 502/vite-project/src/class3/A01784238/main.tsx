@@ -8,6 +8,7 @@ import Login from './LoginForm'
 
 const App = () => {
     // Estado simple para controlar si el usuario ha iniciado sesión
+    // se coloca en el App solo para demostración
     const [loggedUser, setLoggedUser] = useState(false);
 
     // Función que maneja el inicio de sesión
@@ -45,7 +46,7 @@ const App = () => {
 
             {loggedUser ? (
                 <>
-                    <h2>Bienvenido al formulario de solicitud de viaje</h2>
+                    <h2>Welcome to travel form</h2>
                     <TravelForm
                         onClick={() => alert("Gracias por subir tu solicitud de viaje, recibirás una notificación cuando su estado esté disponible")}
                     />
@@ -67,3 +68,5 @@ const App = () => {
 };
 
 createRoot(document.getElementById('root')!).render(<App />);
+
+export default App;
