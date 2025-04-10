@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, FormEvent } from 'react';
 import InputField from './InputField';
 import Button from './Button';
 
@@ -84,7 +84,8 @@ const Login: React.FC<LoginProps> = ({ onClickFunction }) => {
     const { username, password, usernameError, passwordError, isValid } = state;
 
     // Handle submit function
-    const handleSubmit = () => {
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
         dispatch({ type: 'VALIDATE_FORM' });
 
         if (username.length >= 3 && password.length >= 6) {
@@ -103,7 +104,7 @@ const Login: React.FC<LoginProps> = ({ onClickFunction }) => {
     };
 
     return (
-        <div>
+        <form onSubmit={handleSubmit}>
             {/* Contenedor principal con estilos flexbox para alineación vertical */}
             <div style={{
                 display: 'flex',
@@ -126,6 +127,7 @@ const Login: React.FC<LoginProps> = ({ onClickFunction }) => {
                     value={username}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                         dispatch({ type: 'SET_USERNAME', payload: e.target.value })}
+                    name="username"
                 />
                 {/* Mostrar error de validación del nombre de usuario si existe */}
                 {usernameError && <p style={{ color: 'red', margin: '0', fontSize: '0.8rem' }}>{usernameError}</p>}
@@ -137,6 +139,7 @@ const Login: React.FC<LoginProps> = ({ onClickFunction }) => {
                     value={password}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                         dispatch({ type: 'SET_PASSWORD', payload: e.target.value })}
+                    name="password"
                 />
                 {/* Mostrar error de validación de la contraseña si existe */}
                 {passwordError && <p style={{ color: 'red', margin: '0', fontSize: '0.8rem' }}>{passwordError}</p>}
@@ -144,10 +147,10 @@ const Login: React.FC<LoginProps> = ({ onClickFunction }) => {
                 {/* Botón de envío del formulario */}
                 <Button
                     label="Submit"
-                    onClick={handleSubmit}
+                    type="submit"
                 />
             </div>
-        </div>
+        </form>
     );
 };
 
