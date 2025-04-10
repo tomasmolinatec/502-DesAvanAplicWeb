@@ -1,5 +1,9 @@
 import React from 'react';
 
+
+// --- Propiedades del componente botón
+// Dejando una función onClick opcional para manejar eventos de clic,
+// haciendo que el botón sea reutilizable en diferentes contextos
 interface ButtonProps {
     label: string;
     onClick?: () => void;

@@ -1,5 +1,10 @@
 import React from 'react';
 
+
+// --- Propiedades del componente InputField
+// Este componente es un campo de entrada reutilizable que puede ser utilizado
+// en diferentes formularios y contextos. Permite la personalización de tipo,
+// placeholder, valor, y otras propiedades como required, name, className y disabled.
 interface InputFieldProps {
     type: string;
     placeholder: string;
@@ -31,6 +36,7 @@ const InputField: React.FC<InputFieldProps> = ({
             name={name}
             className={className}
             disabled={disabled}
+            // Estilos personalizados para el input
             style={{
                 padding: '8px',
                 borderRadius: '4px',
