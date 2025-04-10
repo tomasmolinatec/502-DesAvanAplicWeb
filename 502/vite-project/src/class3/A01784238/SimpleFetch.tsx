@@ -1,21 +1,30 @@
 import React, { useEffect, useState } from "react";
 
+// Interfaz: Todo
+interface Todo {
+    userId: number;
+    id: number;
+    title: string;
+    completed: boolean;
+}
+
 // ------------------------
 // Función: fetchMockData
 // Función asíncrona para obtener datos de una API de prueba
-const fetchMockData = async (): Promise<any> => {
+const fetchMockData = async (): Promise<Todo> => {
     const response = await fetch(`https://jsonplaceholder.typicode.com/todos/1`);
-    const data = await response.json();
-    return data;
+    if (!response.ok) {
+        throw new Error(`API request failed with status ${response.status}`);
+    }
+    return await response.json() as Todo;
 };
 
 // ------------------------
 // Componente: SimpleFetch
-// Demuestra el uso de useEffect para obtener datos de una API
 const SimpleFetch: React.FC = () => {
     // Estados para manejar la carga y los datos
     const [loading, setLoading] = useState(true);
-    const [data, setData] = useState<any>(null);
+    const [data, setData] = useState<Todo | null>(null);
 
     // useEffect para cargar datos cuando el componente se monta
     useEffect(() => {
@@ -33,7 +42,7 @@ const SimpleFetch: React.FC = () => {
 
         // Iniciar la carga de datos
         loadData();
-    }, []); // Array vacío significa que se ejecuta solo al montar el componente
+    }, []); // Array vacío significa que no depende de nada y se ejecuta solo una vez
 
     // Función para recargar los datos manualmente
     const handleRefresh = async () => {
