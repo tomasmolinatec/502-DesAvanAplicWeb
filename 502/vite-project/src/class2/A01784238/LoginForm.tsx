@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, FormEvent } from 'react';
 import InputField from './InputField';
 import Button from './Button';
 
@@ -16,9 +16,13 @@ const Login: React.FC<LoginProps> = ({ OnClickFunction }) => {
 
     // Función que maneja el envío del formulario
     // Muestra los valores ingresados en la consola
-    const handleSubmit = () => {
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+        // Prevenir el comportamiento por defecto del formulario (para que no se envie dos veces)
+        e.preventDefault();
+
         console.log('Username:', username);
         console.log('Password:', password);
+
         // Si se proporcionó una función OnClickFunction, ejecutarla
         if (OnClickFunction) {
             OnClickFunction();
@@ -26,7 +30,7 @@ const Login: React.FC<LoginProps> = ({ OnClickFunction }) => {
     };
 
     return (
-        <div>
+        <form onSubmit={handleSubmit}>
             {/* Contenedor principal con estilos flexbox para alineación vertical */}
             <div style={{
                 display: 'flex',
@@ -42,6 +46,7 @@ const Login: React.FC<LoginProps> = ({ OnClickFunction }) => {
                     placeholder="Username"
                     value={username}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)}
+                    required
                 />
                 {/* Campo de entrada para la contraseña */}
                 <InputField
@@ -49,11 +54,15 @@ const Login: React.FC<LoginProps> = ({ OnClickFunction }) => {
                     placeholder="Password"
                     value={password}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+                    required
                 />
                 {/* Botón de envío del formulario */}
-                <Button label="Submit" onClick={handleSubmit} />
+                <Button
+                    label="Submit"
+                    type="submit"
+                />
             </div>
-        </div>
+        </form>
     );
 };
 
