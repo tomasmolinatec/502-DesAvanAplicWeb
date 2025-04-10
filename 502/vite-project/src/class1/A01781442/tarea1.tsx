@@ -1,24 +1,36 @@
-import '../../index.css'
-const Arfunc= ()=>{
+import './index.css';
 
-  const details={name:"Rafael",lastName:"Blanga"};
-  const Greet=()=>{
-    const {name,lastName}= details;
-    return `Hello ${name} ${lastName} !!`
-  }
-  return(
-    <>
+
+const concepts = [
+  "Arrow Functions",
+  "Destructuring",
+  "Template Literals",
+  "Modules"
+];
+
+const Arfunc = () => {
+  const user = {
+    name: "Rafael",
+    lastName: "Blanga"
+  };
+
+
+  const welcomeMessage = ({ name, lastName }: typeof user) =>
+    `Welcome, ${name} ${lastName}!`;
+
+  return (
     <div className="Center">
-    <h1>Tarea 1, greeting con ES6+</h1>
-    <div>
-      {Greet()}
+      <h1>Tarea 1: Repaso de ES6+</h1>
+      <p>{welcomeMessage(user)}</p>
+      <h2>Conceptos cubiertos:</h2>
+      <ul>
+        {concepts.map((concept, index) => (
+          <li key={index}>{concept}</li>
+        ))}
+      </ul>
+      <a href="/src/class1/A01781442/index.html">Regresar a Menú</a>
     </div>
-    <a href='/src/class1/A01781442/index.html'>
-      Regresar a Menu
-    </a>
-    </div>
-    </>
   );
 };
-//Export module
+
 export default Arfunc;
