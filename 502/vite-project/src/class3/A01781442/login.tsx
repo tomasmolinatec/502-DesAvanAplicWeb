@@ -1,6 +1,9 @@
-import React, { useState, useReducer } from 'react';
+import React, { useReducer } from 'react';
 import InputField from '../../class2/A01781442/form.tsx';
 import Button from '../../class2/A01781442/button.tsx';
+import '/src/class1/A01781442/index.css';
+
+
 
 type TravelState = {
   destination: string;
@@ -31,96 +34,156 @@ const travelReducer = (state: TravelState, action: TravelAction): TravelState =>
   }
 };
 
-
 const TravelRequestForm: React.FC = () => {
   const [state, dispatch] = useReducer(travelReducer, travelInitialState);
+  const [message, setMessage] = React.useState<{ type: 'success' | 'error'; text: string } | null>(null);
 
   const handleChange = (field: keyof TravelState, value: string) => {
     dispatch({ type: 'UPDATE_FIELD', field, value });
+    if (message) setMessage(null); 
   };
 
   const handleSubmit = () => {
+    const { destination, startDate, endDate, purpose } = state;
+
+    if (!destination || !startDate || !endDate || !purpose) {
+      setMessage({ type: 'error', text: 'Por favor llena todos los campos antes de enviar.' });
+      return;
+    }
+
+    setMessage({ type: 'success', text: '¡Solicitud enviada exitosamente!' });
     console.log('Travel Request:', state);
   };
 
   return (
     <div className="FormBlock">
       <h2>Travel Request Form</h2>
+
+      {message && (
+        <p style={{ color: message.type === 'success' ? 'green' : 'red' }}>{message.text}</p>
+      )}
+
       <input
+        className="FormInput"
         type="text"
         placeholder="Destination"
         value={state.destination}
         onChange={(e) => handleChange('destination', e.target.value)}
       />
       <input
+        className="FormInput"
         type="date"
         value={state.startDate}
         onChange={(e) => handleChange('startDate', e.target.value)}
       />
       <input
+        className="FormInput"
         type="date"
         value={state.endDate}
         onChange={(e) => handleChange('endDate', e.target.value)}
       />
       <textarea
+        className="FormInput"
         placeholder="Purpose"
         value={state.purpose}
         onChange={(e) => handleChange('purpose', e.target.value)}
       />
-      <button onClick={handleSubmit}>Submit</button>
+      <button className="LoginButton" onClick={handleSubmit}>Submit</button>
     </div>
   );
-  
+};
+
+
+
+type LoginState = {
+  username: string;
+  password: string;
+  loading: boolean;
+  error: string;
+  success: boolean;
+};
+
+type LoginAction =
+  | { type: 'UPDATE_FIELD'; field: 'username' | 'password'; value: string }
+  | { type: 'LOGIN_START' }
+  | { type: 'LOGIN_SUCCESS' }
+  | { type: 'LOGIN_ERROR'; message: string };
+
+const loginInitialState: LoginState = {
+  username: '',
+  password: '',
+  loading: false,
+  error: '',
+  success: false,
+};
+
+const loginReducer = (state: LoginState, action: LoginAction): LoginState => {
+  switch (action.type) {
+    case 'UPDATE_FIELD':
+      return { ...state, [action.field]: action.value };
+    case 'LOGIN_START':
+      return { ...state, loading: true, error: '', success: false };
+    case 'LOGIN_SUCCESS':
+      return { ...state, loading: false, success: true };
+    case 'LOGIN_ERROR':
+      return { ...state, loading: false, error: action.message };
+    default:
+      return state;
+  }
 };
 
 const Login: React.FC = () => {
-  const [username, setUsername] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-  const [error, setError] = useState<string>('');
-  const [loading, setLoading] = useState<boolean>(false);
-  const [success, setSuccess] = useState<boolean>(false);
+  const [state, dispatch] = useReducer(loginReducer, loginInitialState);
+
+  const handleChange = (field: 'username' | 'password', value: string) => {
+    dispatch({ type: 'UPDATE_FIELD', field, value });
+  };
 
   const handleSubmit = () => {
-    setLoading(true);
-    setSuccess(false);
-    setError('');
+    dispatch({ type: 'LOGIN_START' });
 
     setTimeout(() => {
-      if (username === 'admin' && password === 'password') {
-        setSuccess(true);
-        setError('');
+      if (state.username === 'admin' && state.password === 'password') {
+        dispatch({ type: 'LOGIN_SUCCESS' });
       } else {
-        setError('Invalid username or password');
-        setSuccess(false);
+        dispatch({ type: 'LOGIN_ERROR', message: 'Invalid username or password' });
       }
-      setLoading(false);
     }, 1000);
   };
 
   return (
-    <div className='Center'>
-      <h1>Login</h1>
-      <a href='/src/class1/A01781442/index.html'>
-      Regresar a Menú
-      </a>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      {success && <p style={{ color: 'green' }}>Login successful!</p>}
-      <InputField
-        type="text"
-        placeholder="Username"
-        value={username}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)}
-      />
-      <InputField
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
-      />
-      <Button label={loading ? 'Loading...' : 'Submit'} onClick={handleSubmit} />
+    <div className="Center">
+      <div className="LoginBox">
+        <h1 className="LoginTitle">Login</h1>
+        <h5>Ingresa tu usuario y contraseña para solicitar un viaje <br /><br /> usr: admin <br /><br /> password: password</h5>
+        <a href="/src/class1/A01781442/index.html">Regresar a Menú</a>
 
-      {/* TravelRequestForm aparece dentro del mismo contenedor */}
-      {success && <TravelRequestForm />}
+        {state.error && <p style={{ color: 'red', marginTop: '1rem' }}>{state.error}</p>}
+        {state.success && <p style={{ color: 'green', marginTop: '1rem' }}>Login successful!</p>}
+
+        <div className="LoginForm">
+          <InputField
+            type="text"
+            placeholder="Username"
+            value={state.username}
+            onChange={(e) => handleChange('username', e.target.value)}
+          />
+
+          <InputField
+            type="password"
+            placeholder="Password"
+            value={state.password}
+            onChange={(e) => handleChange('password', e.target.value)}
+          />
+
+          <Button
+            label={state.loading ? 'Loading...' : 'Submit'}
+            onClick={handleSubmit}
+          />
+        </div>
+      </div>
+
+      {state.success && <TravelRequestForm />}
     </div>
   );
 };

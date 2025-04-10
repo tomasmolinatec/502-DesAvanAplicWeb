@@ -5,40 +5,31 @@ const LoginPage: React.FC = () => (
     <div className="LoginBox">
       <h1 className="LoginTitle">Inicia Sesión</h1>
       <form className="LoginForm">
-        <FormGroup
-          label="Email"
-          type="email"
-          id="email"
-          placeholder="you@example.com"
-        />
-        <FormGroup
-          label="Password"
-          type="password"
-          id="password"
-          placeholder="Enter your password"
-        />
+        <div className="FormGroup">
+          <label htmlFor="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="yourusername"
+            className="FormInput"
+          />
+        </div>
+
+        <div className="FormGroup">
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter your password"
+            className="FormInput"
+          />
+        </div>
+
         <button type="submit" className="LoginButton">Log In</button>
       </form>
     </div>
-  </div>
-);
-
-// Subcomponente funcional
-const FormGroup: React.FC<{
-  label: string;
-  type: string;
-  id: string;
-  placeholder: string;
-}> = ({ label, type, id, placeholder }) => (
-  <div className="FormGroup">
-    <label htmlFor={id}>{label}</label>
-    <input
-      type={type}
-      id={id}
-      name={id}
-      placeholder={placeholder}
-      className="FormInput"
-    />
   </div>
 );
 

@@ -71,14 +71,6 @@ button:focus-visible {
 
 
 
-.FormBlock {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  width: 100%;
-  max-width: 400px;
-  margin-top: 2rem;
-}
 
 .FormBlock input,
 .FormBlock textarea {
@@ -105,14 +97,7 @@ button:focus-visible {
 }
 
 
-.LoginBox {
-  background-color: #fff;
-  padding: 2rem 2.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 400px;
-}
+
 
 .LoginTitle {
   margin-bottom: 1.5rem;
@@ -168,16 +153,6 @@ body, html {
   color: #333;
 }
 
-/* Centro el contenido vertical y horizontal */
-.Center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 40px 20px;
-  min-height: 100vh;
-  box-sizing: border-box;
-}
 
 /* Encabezado */
 h1 {
@@ -228,14 +203,16 @@ a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center; /* Centra verticalmente */
   padding: 60px 20px;
   box-sizing: border-box;
-  min-height: 100vh;
+  min-height: 100vh; /* Hace que tome toda la altura */
   background-color: #f5f7fa;
   max-width: 600px;
   margin: 0 auto;
+  text-align: center;
 }
+
 
 
 .MenuTitle {
@@ -268,4 +245,43 @@ a:hover {
 
 .MenuLinks a:hover {
   color: #0056b3;
+}
+
+.Center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; 
+  padding: 60px 20px;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  background-color: #f9f9f9;
+}
+
+
+.LoginBox {
+  background-color: #ffffff;
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 2rem;
+}
+
+/* Formulario que aparece después */
+.FormBlock {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
