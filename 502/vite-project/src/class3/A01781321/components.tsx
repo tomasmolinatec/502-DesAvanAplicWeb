@@ -1,14 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, FormEvent } from "react";
 import './styles.css';
 
+function Login2({setIsLoggedIn}: {setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>}) {
+    const [username, setUsername] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
+    const [error, setError] = useState<string>("");
+    
 
-function Login2() {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-    const handleLogin = (e) => {
+    const handleLogin = (e: FormEvent) => {
         e.preventDefault();
         if (username === "andresoide2000" && password === "test123") {
             setIsLoggedIn(true);
@@ -17,9 +16,8 @@ function Login2() {
         }
     };
 
-    if (isLoggedIn) {
-        return <Dashboard />;
-    }
+
+    
 
     return (
         <div>
@@ -30,7 +28,7 @@ function Login2() {
                     <input
                         type="text"
                         value={username}
-                        onChange={(e) => setUsername(e.target.value)}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)}
                     />
                 </div>
                 <div>
@@ -38,7 +36,7 @@ function Login2() {
                     <input
                         type="password"
                         value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
                     />
                 </div>
                 {error && <p style={{ color: "red" }}>{error}</p>}
@@ -49,6 +47,11 @@ function Login2() {
 }
 
 function Dashboard() {
+    const navigateTo = (path: string) => {
+        // You might want to use React Router instead of window.location
+        window.location.href = path;
+    };
+
     return (
         <div>
             <h1>Dashboard</h1>
@@ -56,12 +59,12 @@ function Dashboard() {
                 <h2>Navigation</h2>
                 <ul>
                     <li>
-                        <button onClick={() => (window.location.href = "/src/class2/A01781321/login.jsx")}>
+                        <button onClick={() => navigateTo("/src/class2/A01781321/index.html")}>
                             Class 2 Login
                         </button>
                     </li>
                     <li>
-                        <button onClick={() => (window.location.href = "/src/class1/A01781321/tarea1.html")}>
+                        <button onClick={() => navigateTo("/src/class1/A01781321/index.html")}>
                             Class 1 Code
                         </button>
                     </li>

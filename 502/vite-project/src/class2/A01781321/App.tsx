@@ -1,14 +1,11 @@
-// Login para las distintas clases
-import React, { useState } from 'react';
+import React, { useState, FormEvent } from 'react';
 
+function App() {
+    const [username, setUsername] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+    const [error, setError] = useState<string>('');
 
-
-function Login() {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
-
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
         if (username === '' || password === '') {
             setError('Please fill in all fields');
@@ -19,6 +16,7 @@ function Login() {
             console.log('Password:', password);
         }
     };
+
     return (
         <div>
             <h2>Login</h2>
@@ -45,4 +43,7 @@ function Login() {
                 <button type="submit">Login</button>
             </form>
         </div>
-    );}
+    );
+}
+
+export default App;
