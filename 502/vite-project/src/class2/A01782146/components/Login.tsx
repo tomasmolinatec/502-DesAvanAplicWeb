@@ -22,7 +22,8 @@ const LoginComponent = () => {
 
   return (
     <div style={{ padding: "20px" }}>
-      <h1>Login (y trabajo de Clase2)</h1>
+      <h1>Trabajo de Clase2</h1>
+      <h2>Login con useState y componentes</h2>
       <p>
         <strong>Credenciales estáticas:</strong> Username: <em>admin</em>,
         Password: <em>admin123</em>
@@ -68,7 +69,7 @@ const LoginComponent = () => {
         }}
       >
         Regresar al menú
-      </button>{" "}
+      </button>
     </div>
   );
 };

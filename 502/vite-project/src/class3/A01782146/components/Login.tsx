@@ -1,12 +1,11 @@
 import React, { useReducer, useEffect } from "react";
-import InputComponent from "./components/Input";
-import ButtonComponent from "./components/Button";
+import InputComponent from "./Input";
+import ButtonComponent from "./Button";
 
 interface LoginProps {
   onLogin: (username: string, password: string) => void;
 }
 
-// Definición del estado del formulario
 interface LoginState {
   username: string;
   password: string;
@@ -14,7 +13,6 @@ interface LoginState {
   loading: boolean;
 }
 
-// Acciones para el reducer
 type Action =
   | { type: "SET_USERNAME"; payload: string }
   | { type: "SET_PASSWORD"; payload: string }
@@ -46,7 +44,7 @@ function reducer(state: LoginState, action: Action): LoginState {
   }
 }
 
-const Clase3 = ({ onLogin }: LoginProps) => {
+const Login: React.FC<LoginProps> = ({ onLogin }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
@@ -55,17 +53,14 @@ const Clase3 = ({ onLogin }: LoginProps) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    // Reiniciar error y activar loading
     dispatch({ type: "SET_ERROR", payload: "" });
     dispatch({ type: "SET_LOADING", payload: true });
 
-    // Simulación de petición asíncrona (por ejemplo, llamada a un API)
+    // Simula una llamada asíncrona (por ejemplo, a un API)
     setTimeout(() => {
-      // Validación simple: los campos no deben estar vacíos
+      // Validación simple
       if (state.username.trim() !== "" && state.password.trim() !== "") {
         dispatch({ type: "SET_LOADING", payload: false });
-        // Se invoca la función onLogin para que el componente App asigne el rol.
         onLogin(state.username, state.password);
       } else {
         dispatch({ type: "SET_LOADING", payload: false });
@@ -74,19 +69,41 @@ const Clase3 = ({ onLogin }: LoginProps) => {
           payload: "Credenciales inválidas. Por favor, inténtalo de nuevo.",
         });
       }
-    }, 1000); // simulación de 1 segundo
+    }, 1000);
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Trabajo de Clase 3</h1>
-      <h2>Login con Roles y useReducer</h2>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center", // Centrado vertical
+        alignItems: "center", // Centrado horizontal
+        minHeight: "100vh",
+        textAlign: "center",
+        padding: "20px",
+      }}
+    >
+      <h1>Login con Roles</h1>
       <p>
-        <strong>Credenciales de prueba: </strong>Para el rol admin usa username:{" "}
-        <em>admin.</em> Para manager usa username: <em>manager.</em> De lo
-        contrario se asigna employee. Utiliza cualquier password.
+        <strong>Credenciales de prueba:</strong>
+        Para el rol admin usa username: <em>admin</em>
+        <br />
+        Para manager usa username: <em>manager</em>
+        <br />
+        De lo contrario se asigna employee.
+        <br />
+        Utiliza cualquier password.
       </p>
-      <form onSubmit={handleSubmit}>
+      <form
+        onSubmit={handleSubmit}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          width: "fit-content",
+        }}
+      >
         <div style={{ marginBottom: "10px" }}>
           <label>
             Username:{" "}
@@ -124,24 +141,8 @@ const Clase3 = ({ onLogin }: LoginProps) => {
           <ButtonComponent type="submit" text="Login" />
         )}
       </form>
-      <button
-        onClick={() => {
-          window.location.href = "/src/class1/A01782146/explorador/index.html";
-        }}
-        style={{
-          padding: "10px 20px",
-          border: "none",
-          borderRadius: "4px",
-          backgroundColor: "#3b82f6",
-          color: "#fff",
-          cursor: "pointer",
-          marginTop: "20px",
-        }}
-      >
-        Regresar al menú
-      </button>
     </div>
   );
 };
 
-export default Clase3;
+export default Login;

@@ -1,7 +1,7 @@
 import "/src/App.css";
 
 const ExploradorClases = () => {
-  const clases = ["Clase 1", "Clase 2", "Clase 3", "Clase 4"];
+  const clases = ["Clase 1", "Clase 2", "Clase 3", "Clase 4", "Clase 5"];
 
   const handleClassSelect = (className: string) => {
     // Redirige a una ruta determinada según la clase
@@ -13,6 +13,8 @@ const ExploradorClases = () => {
       window.location.href = "/src/class3/A01782146/index.html";
     } else if (className === "Clase 4") {
       window.location.href = "/src/class4/A01782146/index.html";
+    } else if (className === "Clase 5") {
+      window.location.href = "/src/class5/A01782146/index.html";
     }
   };
 
@@ -22,7 +24,7 @@ const ExploradorClases = () => {
     console.log("loggedIn after remove:", localStorage.getItem("loggedIn")); // Debería imprimir null
 
     // Redirige a la ruta del login
-    window.location.href = "/src/class2/A01782146/index.html";
+    window.location.href = "/";
   };
 
   return (
@@ -68,7 +70,7 @@ const ExploradorClases = () => {
           marginTop: "30px",
         }}
       >
-        Regresar al login
+        Regresar al inicio
       </button>
     </div>
   );
