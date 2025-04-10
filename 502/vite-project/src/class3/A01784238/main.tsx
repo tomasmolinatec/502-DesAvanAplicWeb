@@ -45,7 +45,7 @@ const App = () => {
 
             {loggedUser ? (
                 <>
-                    <h2>Travel Request Form using useReducer</h2>
+                    <h2>Bienvenido al formulario de solicitud de viaje</h2>
                     <TravelForm
                         onClick={() => alert("Gracias por subir tu solicitud de viaje, recibirás una notificación cuando su estado esté disponible")}
                     />
