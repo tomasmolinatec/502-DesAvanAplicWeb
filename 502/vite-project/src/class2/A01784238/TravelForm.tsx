@@ -8,7 +8,7 @@ interface TravelFormProps {
     title?: string;
     description?: string;
     date?: string;
-    onClick?: () => void;
+    onClickFunction?: () => void;
 }
 
 // ------------------------
@@ -18,7 +18,7 @@ const TravelForm: React.FC<TravelFormProps> = ({
     title = "Travel Request",
     description = "",
     date = new Date().toISOString().split('T')[0],
-    onClick
+    onClickFunction
 }) => {
     // Estado para almacenar los valores ingresados por el usuario
     const [destination, setDestination] = useState<string>('');
@@ -36,8 +36,8 @@ const TravelForm: React.FC<TravelFormProps> = ({
         });
 
         // Si se proporcionó una función onClick, ejecutarla
-        if (onClick) {
-            onClick();
+        if (onClickFunction) {
+            onClickFunction();
         }
     };
 
@@ -71,10 +71,6 @@ const TravelForm: React.FC<TravelFormProps> = ({
     return (
         <div
             style={cardStyle}
-            onClick={() => {
-                console.log('Card clicked');
-                if (onClick) onClick();
-            }}
         >
             {/* Título del formulario */}
             <h2 style={titleStyle}>{title}</h2>

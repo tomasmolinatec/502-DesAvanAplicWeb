@@ -5,7 +5,11 @@ import Button from './Button';
 // ------------------------
 // Componente: Login
 // Formulario de inicio de sesión con campos para username y password.
-const Login: React.FC = () => {
+interface LoginProps {
+    OnClickFunction?: () => void;
+}
+
+const Login: React.FC<LoginProps> = ({ OnClickFunction }) => {
     // Estado para almacenar los valores ingresados por el usuario
     const [username, setUsername] = useState<string>('');
     const [password, setPassword] = useState<string>('');
@@ -15,6 +19,10 @@ const Login: React.FC = () => {
     const handleSubmit = () => {
         console.log('Username:', username);
         console.log('Password:', password);
+        // Si se proporcionó una función OnClickFunction, ejecutarla
+        if (OnClickFunction) {
+            OnClickFunction();
+        }
     };
 
     return (

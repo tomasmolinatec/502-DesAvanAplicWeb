@@ -12,9 +12,9 @@ createRoot(document.getElementById('root')!).render(
         <SimpleCounter />
         <h2>Using useEffect Example</h2>
         <SimpleFetch />
+        <h2>Login Form using useReducer</h2>
+        <Login onClickFunction={() => alert("Gracias por subir tus credenciales, puedes verlas en la consola")} />
         <h2>Travel Request Form usign useReducer</h2>
         <TravelForm />
-        <h2>Login Form using useReducer</h2>
-        <Login />
     </StrictMode>,
 )

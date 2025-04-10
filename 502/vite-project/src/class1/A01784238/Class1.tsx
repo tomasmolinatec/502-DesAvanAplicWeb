@@ -14,9 +14,16 @@ const greet = ({ name, age }: User): string =>
 // ------------------------
 // Módulo simulado: Advanced JavaScript Practice
 // Función para obtener datos de una API simulada usando fetch.
-const fetchMockData = async (): Promise<any> => {
+interface Todo {
+    userId: number;
+    id: number;
+    title: string;
+    completed: boolean;
+}
+
+const fetchMockData = async (): Promise<Todo> => {
     const response = await fetch(`https://jsonplaceholder.typicode.com/todos/1`);
-    const data = await response.json();
+    const data: Todo = await response.json();
     return data;
 };
 
@@ -73,7 +80,7 @@ interface DashboardProps {
 }
 
 const Dashboard: React.FC<DashboardProps> = ({ username }) => {
-    const [data, setData] = useState<any>(null);
+    const [data, setData] = useState<Todo | null>(null);
 
     const handleFetchData = async () => {
         try {

@@ -68,28 +68,35 @@ const loginReducer = (state: LoginState, action: LoginAction): LoginState => {
 };
 
 // ------------------------
+// Interface para las props del componente Login
+interface LoginProps {
+    onClickFunction?: () => void;
+}
+
+// ------------------------
 // Componente: Login
 // Formulario de inicio de sesión con campos para username y password.
-const Login: React.FC = () => {
+const Login: React.FC<LoginProps> = ({ onClickFunction }) => {
     // Usando useReducer para manejar el estado del formulario
     const [state, dispatch] = useReducer(loginReducer, initialState);
 
     // Destructuring para acceder fácilmente a los valores del estado
     const { username, password, usernameError, passwordError, isValid } = state;
 
-    // Función que maneja el envío del formulario
+    // Handle submit function
     const handleSubmit = () => {
-        // Validar el formulario antes de enviar
         dispatch({ type: 'VALIDATE_FORM' });
 
-        // Si el formulario es válido, proceder con el envío
         if (username.length >= 3 && password.length >= 6) {
             console.log('Username:', username);
             console.log('Password:', password);
             console.log('Form is valid:', isValid);
 
-            // Opcional: resetear el formulario después del envío
-            // dispatch({ type: 'RESET_FORM' });
+            // Llamar a la función de callback si fue proporcionada
+            if (onClickFunction) {
+                onClickFunction();
+            }
+
         } else {
             console.log('Form has errors, please fix them');
         }
