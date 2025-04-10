@@ -15,6 +15,6 @@ createRoot(document.getElementById('root')!).render(
         <h2>Login Form using useReducer</h2>
         <Login onClickFunction={() => alert("Gracias por subir tus credenciales, puedes verlas en la consola")} />
         <h2>Travel Request Form usign useReducer</h2>
-        <TravelForm />
+        <TravelForm onClick={() => alert("Gracias por subir tu solicitud de viaje, recibiras una notificacion cuando su estado este disponible")} />
     </StrictMode>,
 )
