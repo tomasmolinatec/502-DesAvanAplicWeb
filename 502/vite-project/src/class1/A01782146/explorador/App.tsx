@@ -1,9 +1,9 @@
-import Clase2 from "./Clase2";
+import ExploradorClases from "./exploradorClases";
 
 const App = () => {
   return (
     <div>
-      <Clase2 />
+      <ExploradorClases />
     </div>
   );
 };

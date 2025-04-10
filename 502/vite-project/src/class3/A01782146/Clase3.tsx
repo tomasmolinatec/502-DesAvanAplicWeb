@@ -73,7 +73,7 @@ const Clase1 = () => {
 
       <button
         onClick={() => {
-          window.location.href = "/src/class2/A01782146/index.html";
+          window.location.href = "/src/class1/A01782146/explorador/index.html";
         }}
         style={{
           padding: "10px 20px",

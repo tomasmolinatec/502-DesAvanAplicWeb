@@ -29,7 +29,7 @@ function App() {
       </p>
       {/* Botón para navegar a la otra aplicación */}
       <a
-        href="/src/class2/A01782146/index.html"
+        href="/src/class1/A01782146/explorador/index.html"
         id="gabrieledid"
         className="gabrieledid"
       >

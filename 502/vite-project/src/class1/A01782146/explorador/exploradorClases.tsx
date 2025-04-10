@@ -1,12 +1,14 @@
 import "/src/App.css";
 
 const ExploradorClases = () => {
-  const clases = ["Clase 1", "Clase 3", "Clase 4"];
+  const clases = ["Clase 1", "Clase 2", "Clase 3", "Clase 4"];
 
   const handleClassSelect = (className: string) => {
     // Redirige a una ruta determinada según la clase
     if (className === "Clase 1") {
       window.location.href = "/src/class1/A01782146/index.html";
+    } else if (className === "Clase 2") {
+      window.location.href = "/src/class2/A01782146/index.html";
     } else if (className === "Clase 3") {
       window.location.href = "/src/class3/A01782146/index.html";
     } else if (className === "Clase 4") {

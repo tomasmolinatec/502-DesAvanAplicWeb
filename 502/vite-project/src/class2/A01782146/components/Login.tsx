@@ -2,11 +2,7 @@ import React, { useState } from "react";
 import Input from "./Input";
 import Button from "./Button";
 
-interface LoginComponentProps {
-  onLoginSuccess: () => void;
-}
-
-const LoginComponent = ({ onLoginSuccess }: LoginComponentProps) => {
+const LoginComponent = () => {
   // Credenciales estáticas de prueba:
   // Username: admin
   // Password: admin123
@@ -18,7 +14,7 @@ const LoginComponent = ({ onLoginSuccess }: LoginComponentProps) => {
     console.log("Username:", username);
     console.log("Password:", password);
     if (username === "admin" && password === "admin123") {
-      onLoginSuccess();
+      alert("Login exitoso!");
     } else {
       alert("Credenciales inválidas. Por favor, inténtalo de nuevo.");
     }
@@ -57,7 +53,22 @@ const LoginComponent = ({ onLoginSuccess }: LoginComponentProps) => {
         <Button type="submit" text="Login" />
       </form>
       <br />
-      <a href="/">Regresar al incio</a>
+      <button
+        onClick={() => {
+          window.location.href = "/src/class1/A01782146/explorador/index.html";
+        }}
+        style={{
+          padding: "10px 20px",
+          border: "none",
+          borderRadius: "4px",
+          backgroundColor: "#3b82f6",
+          color: "#fff",
+          cursor: "pointer",
+          marginTop: "20px",
+        }}
+      >
+        Regresar al menú
+      </button>{" "}
     </div>
   );
 };

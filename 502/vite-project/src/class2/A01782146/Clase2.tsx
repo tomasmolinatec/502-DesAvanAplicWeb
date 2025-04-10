@@ -1,14 +1,10 @@
 import LoginComponent from "./components/Login";
 import "/src/App.css";
 
-interface Clase2Props {
-  onLoginSuccess: () => void;
-}
-
-const Clase2 = ({ onLoginSuccess }: Clase2Props) => {
+const Clase2 = () => {
   return (
     <div>
-      <LoginComponent onLoginSuccess={onLoginSuccess} />
+      <LoginComponent />
     </div>
   );
 };
