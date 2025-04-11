@@ -1,22 +1,97 @@
 import { useState, FormEvent, ChangeEvent } from 'react';
 
+// Styles for components
+const styles = {
+  container: {
+    maxWidth: '800px',
+    margin: '0 auto',
+    padding: '30px',
+    backgroundColor: '#f8fafc',
+    borderRadius: '10px',
+    boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
+    fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, sans-serif',
+    color: '#334155'
+  },
+  header: {
+    fontSize: '1.75rem',
+    color: '#0f172a',
+    fontWeight: 'bold',
+    borderBottom: '3px solid #3b82f6',
+    paddingBottom: '0.5rem',
+    marginBottom: '1.5rem'
+  },
+  card: {
+    backgroundColor: 'white',
+    borderRadius: '8px',
+    padding: '1.5rem',
+    marginBottom: '1.5rem',
+    boxShadow: '0 2px 8px rgba(0,0,0,0.06)'
+  },
+  cardTitle: {
+    fontSize: '1.25rem',
+    fontWeight: '600',
+    marginBottom: '1rem',
+    color: '#1e293b'
+  },
+  formGroup: {
+    marginBottom: '1rem'
+  },
+  formLabel: {
+    display: 'block',
+    marginBottom: '0.5rem',
+    fontSize: '0.875rem',
+    fontWeight: '500',
+    color: '#475569'
+  },
+  counterValue: {
+    fontSize: '1.25rem',
+    fontWeight: '600',
+    marginBottom: '0.75rem',
+    color: '#1e40af'
+  },
+  hr: {
+    margin: '1.5rem 0',
+    border: 'none',
+    borderTop: '1px solid #e2e8f0'
+  },
+  formTitle: {
+    textAlign: 'center' as const,
+    marginBottom: '1.5rem'
+  }
+};
+
 // InputField Component with Props
 interface InputFieldProps {
   type: string;
   placeholder: string;
   value: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  label?: string;
 }
 
-function InputField({ type, placeholder, value, onChange }: InputFieldProps) {
+function InputField({ type, placeholder, value, onChange, label }: InputFieldProps) {
+  const inputStyle = {
+    width: '100%',
+    padding: '0.75rem',
+    borderRadius: '0.375rem',
+    border: '1px solid #cbd5e1',
+    fontSize: '0.875rem',
+    backgroundColor: '#fff',
+    transition: 'border-color 0.15s ease-in-out',
+    outline: 'none',
+  };
+  
   return (
-    <input 
-      type={type}
-      placeholder={placeholder}
-      value={value}
-      onChange={onChange}
-      className="border rounded px-3 py-2 w-full"
-    />
+    <div style={styles.formGroup}>
+      {label && <label style={styles.formLabel}>{label}</label>}
+      <input 
+        type={type}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+        style={inputStyle}
+      />
+    </div>
   );
 }
 
@@ -26,17 +101,22 @@ interface ButtonProps {
   type?: "button" | "submit" | "reset";
   variant: string;
   onClick?: () => void;
+  fullWidth?: boolean;
 }
 
-function Button({ label, type = "button", variant, onClick }: ButtonProps) {
+function Button({ label, type = "button", variant, onClick, fullWidth = false }: ButtonProps) {
   const buttonStyle = {
-    padding: '0.5rem 1rem',
-    borderRadius: '4px',
-    background: variant === 'primary' ? '#3b82f6' : '#e5e7eb',
+    padding: '0.75rem 1.25rem',
+    borderRadius: '0.375rem',
+    backgroundColor: variant === 'primary' ? '#3b82f6' : '#e5e7eb',
     color: variant === 'primary' ? 'white' : '#1f2937',
     border: 'none',
+    fontWeight: '500' as const,
+    fontSize: '0.875rem',
     cursor: 'pointer',
     transition: 'all 0.2s',
+    width: fullWidth ? '100%' : 'auto',
+    boxShadow: variant === 'primary' ? '0 2px 4px rgba(59, 130, 246, 0.3)' : 'none',
   };
 
   return (
@@ -55,13 +135,21 @@ function Counter() {
   const [count, setCount] = useState(0);
   
   return (
-    <div className="mb-6 p-4 border rounded shadow-sm">
-      <p className="text-lg">Count: {count}</p>
-      <Button 
-        label="Increment" 
-        variant="primary" 
-        onClick={() => setCount(count + 1)}
-      />
+    <div style={styles.card}>
+      <h3 style={styles.cardTitle}>State Example with Counter</h3>
+      <div style={styles.counterValue}>Count: {count}</div>
+      <div style={{ display: 'flex', gap: '0.5rem' }}>
+        <Button 
+          label="Decrement" 
+          variant="default" 
+          onClick={() => setCount(count - 1)}
+        />
+        <Button 
+          label="Increment" 
+          variant="primary" 
+          onClick={() => setCount(count + 1)}
+        />
+      </div>
     </div>
   );
 }
@@ -78,30 +166,33 @@ function LoginForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-md mx-auto space-y-4">
-      <h2 className="text-xl font-bold mb-2">Login Form</h2>
-      <div className="mb-3">
+    <div style={styles.card}>
+      <h3 style={{...styles.cardTitle, ...styles.formTitle}}>Component Composition Example</h3>
+      <form onSubmit={handleSubmit}>
         <InputField
           type="email"
-          placeholder="Email"
+          placeholder="Enter your email"
           value={email}
           onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+          label="Email Address"
         />
-      </div>
-      <div className="mb-3">
         <InputField
           type="password"
-          placeholder="Password"
+          placeholder="Enter your password"
           value={password}
           onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+          label="Password"
         />
-      </div>
-      <Button 
-        label="Sign In" 
-        type="submit"
-        variant="primary"
-      />
-    </form>
+        <div style={{ marginTop: '1.5rem' }}>
+          <Button 
+            label="Sign In" 
+            type="submit"
+            variant="primary"
+            fullWidth={true}
+          />
+        </div>
+      </form>
+    </div>
   );
 }
 
@@ -111,18 +202,17 @@ interface GreetingProps {
 }
 
 function Greeting({ name }: GreetingProps) {
-  return <h1 className="text-2xl font-bold mb-4">Hello, {name}!</h1>;
+  return <h1 style={styles.header}>React Components Workshop: Props & Composition</h1>;
 }
 
 // Main App Component
 function App() {
   return (
-    <div className="App p-6 max-w-2xl mx-auto">
-      <Greeting name="Facundo" />
-      <div className="grid gap-6">
-        <Counter />
-        <LoginForm />
-      </div>
+    <div style={styles.container}>
+      <Greeting name="Student" />
+      <Counter />
+      <hr style={styles.hr} />
+      <LoginForm />
     </div>
   );
 }
