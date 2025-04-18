@@ -18,17 +18,20 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+        <button>
+        <a href="/src/class1/A01784521/menu/menu.html">Activities index</a>
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+      </div>
+      <div>
+        <a href='/src/class2/A01784008/index.html' target="_blank" rel="noopener noreferrer">
+          Leon Blanga Hasbani A01784008
+        </a>
+        <a href='/src/class1/A01781442/index.html'>
+          Rafael Blanga Hanono A01781442
+        </a>
         <a href="src/class1/A01784238/menu/index.html">Menú de José Manuel García Zumaya</a>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      
     </>
   )
 }
