@@ -29,6 +29,14 @@ function App() {
         <button>
         <a href="/src/class1/A01784521/menu/menu.html">Activities index</a>
         </button>
+        <p>
+          Edit <code>src/App.tsx</code> and save to test HMR
+        </p>
+        <p>
+          <a href="/src/class1/A01025119/webpage/A01025119.html" target="_blank" rel="noopener noreferrer" >
+            Pagina de Do Kyu
+          </a>
+        </p>
       </div>
       <div>
         <a href='/src/class2/A01784008/index.html' target="_blank" rel="noopener noreferrer">
