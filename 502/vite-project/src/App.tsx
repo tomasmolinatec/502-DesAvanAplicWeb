@@ -21,9 +21,10 @@ function App() {
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+        <div>
+        <a href='/src/class2/A01784008/index.html' target="_blank" rel="noopener noreferrer">
+          Leon Blanga Hasbani A01784008
+        </a></div>
       </div>
       <a href='/src/class1/A01781442/index.html'>
       Rafael Blanga Hanono A01781442
