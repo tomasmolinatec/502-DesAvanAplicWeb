@@ -14,5 +14,17 @@
 ## Alberto Limón Cancino (DB/Backend)
 ## a01784008:leon,blanga(DEVOPS_FRONTEND)
 
+
+
+
+
+
+
+
+
+
+
+
+## A01028038: Valeria, Tapia (DB/Backend)
 502 - Desarrollo Avanzado de Aplicaciones Web
 
