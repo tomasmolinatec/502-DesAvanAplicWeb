@@ -7,5 +7,4 @@
 ## Alberto Limón Cancino (DB/Backend)
 ## a01784008:leon,blanga(DEVOPS_FRONTEND)
 
-
 502 - Desarrollo Avanzado de Aplicaciones Web
