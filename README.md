@@ -1,5 +1,5 @@
-# 502-DesAvanAplicWeb
 
+## Andrés, Gomes Brandt (Backend/deployment)
 ## Tomas Molina Perez Diez
 ## Jefe de Base de Datos/Backend
 ## Imanol Santisteban(DevOps/BackEnd)
@@ -8,3 +8,4 @@
 ## a01784008:leon,blanga(DEVOPS_FRONTEND)
 
 502 - Desarrollo Avanzado de Aplicaciones Web
+

@@ -5,6 +5,11 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+  const navigateTo = (path: string) => {
+    // You might want to use React Router instead of window.location
+    window.location.href = path;
+};
+
 
   return (
     <>
@@ -18,6 +23,9 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
+        <button onClick={() => navigateTo("/src/class3/A01781321/index.html")}>
+          Class projects
+        </button>
         <button>
         <a href="/src/class1/A01784521/menu/menu.html">Activities index</a>
         </button>
