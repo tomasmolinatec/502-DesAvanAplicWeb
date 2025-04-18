@@ -1,7 +1,6 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
 
 function App() {
   const [count, setCount] = useState(0)
@@ -23,12 +22,20 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
+
+        <button
+          onClick={() => window.location.href = "/src/class3/A01782557/dashboard/index.html"}
+        >
+        Dashboard
+        </button>
+
         <button onClick={() => navigateTo("/src/class3/A01781321/index.html")}>
           Class projects
         </button>
         <button>
         <a href="/src/class1/A01784521/menu/menu.html">Activities index</a>
         </button>
+
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
@@ -50,13 +57,12 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-
       <a
         href="/src/class1/A01784116/menu/index.html"
       >
         Clases Tomas Molina
     </>
-  )
+  );
 }
 
 export default App
