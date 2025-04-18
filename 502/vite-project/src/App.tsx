@@ -22,6 +22,14 @@ function App() {
         <a href="/src/class1/A01784521/menu/menu.html">Activities index</a>
         </button>
       </div>
+      <div>
+        <a href='/src/class2/A01784008/index.html' target="_blank" rel="noopener noreferrer">
+          Leon Blanga Hasbani A01784008
+        </a>
+        <a href='/src/class1/A01781442/index.html'>
+          Rafael Blanga Hanono A01781442
+        </a>
+      </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
