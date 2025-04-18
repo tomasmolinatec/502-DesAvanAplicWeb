@@ -5,6 +5,11 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+  const navigateTo = (path: string) => {
+    // You might want to use React Router instead of window.location
+    window.location.href = path;
+};
+
 
   return (
     <>
@@ -18,8 +23,11 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+        <button onClick={() => navigateTo("/src/class3/A01781321/index.html")}>
+          Class projects
+        </button>
+        <button>
+        <a href="/src/class1/A01784521/menu/menu.html">Activities index</a>
         </button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
@@ -30,9 +38,16 @@ function App() {
           </a>
         </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <div>
+        <a href='/src/class2/A01784008/index.html' target="_blank" rel="noopener noreferrer">
+          Leon Blanga Hasbani A01784008
+        </a>
+        <a href='/src/class1/A01781442/index.html'>
+          Rafael Blanga Hanono A01781442
+        </a>
+        <a href="src/class1/A01784238/menu/index.html">Menú de José Manuel García Zumaya</a>
+      </div>
+      
     </>
   )
 }
