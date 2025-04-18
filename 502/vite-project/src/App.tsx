@@ -26,13 +26,20 @@ function App() {
         <button onClick={() => navigateTo("/src/class3/A01781321/index.html")}>
           Class projects
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+        <button>
+        <a href="/src/class1/A01784521/menu/menu.html">Activities index</a>
+        </button>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <div>
+        <a href='/src/class2/A01784008/index.html' target="_blank" rel="noopener noreferrer">
+          Leon Blanga Hasbani A01784008
+        </a>
+        <a href='/src/class1/A01781442/index.html'>
+          Rafael Blanga Hanono A01781442
+        </a>
+        <a href="src/class1/A01784238/menu/index.html">Menú de José Manuel García Zumaya</a>
+      </div>
+      
     </>
   )
 }
