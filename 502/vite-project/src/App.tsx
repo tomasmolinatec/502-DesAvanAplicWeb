@@ -47,7 +47,14 @@ function App() {
         </a>
         <a href="src/class1/A01784238/menu/index.html">Menú de José Manuel García Zumaya</a>
       </div>
-      
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
+
+      <a
+        href="/src/class1/A01784116/menu/index.html"
+      >
+        Clases Tomas Molina
     </>
   )
 }
