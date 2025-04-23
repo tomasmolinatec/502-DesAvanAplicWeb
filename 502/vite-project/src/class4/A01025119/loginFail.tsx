@@ -9,7 +9,7 @@ type Props = {
 const LoginFailed: React.FC<Props> = ({ onBack }) => {
   return (
     <div style={styles.page}>
-      <h2>❌ Login Failed</h2>
+      <h2>Login Failed</h2>
       <p>Invalid username or password.</p>
       <Button label="Back to Login" onClick={onBack} />
     </div>

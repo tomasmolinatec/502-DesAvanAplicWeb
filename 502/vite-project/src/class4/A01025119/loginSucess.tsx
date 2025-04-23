@@ -9,7 +9,7 @@ type Props = {
   const LoginSuccess: React.FC<Props> = ({ username, onBack }) => {
     return (
       <div style={styles.page}>
-        <h2>✅ Welcome, {username}!</h2>
+        <h2>Welcome, {username}!</h2>
         <p>You have successfully logged in.</p>
   
         <Button label="Back to Login" onClick={onBack} />
