@@ -12,6 +12,11 @@ export default function Menu() {
       <Link to="/EjemploClase" className="menu-button">
         Ver Detalles
       </Link>
+
+      <Link to="/Clase4" className="menu-button">
+        Clase 4
+      </Link>
+
     </div>
   );
 }
