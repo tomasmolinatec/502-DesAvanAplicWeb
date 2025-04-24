@@ -1,6 +1,7 @@
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
+import { useState } from "react";
 
 function App() {
   const [count, setCount] = useState(0)
@@ -60,11 +61,12 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-      <a
-        href="/src/class1/A01784116/menu/index.html"
-      >
-        Clases Tomas Molina
-    </>
+    <a
+      href="/src/class1/A01784116/menu/index.html"
+    >
+      Clases Tomas Molina
+    </a>
+  </>
   );
 }
 
