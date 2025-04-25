@@ -2,9 +2,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import CelulaRouter from "./Router";
+import { UserProvider } from "../Clase6/UserContext";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <CelulaRouter />
+    <UserProvider>
+      <CelulaRouter />
+
+    </UserProvider>
   </React.StrictMode>
 );

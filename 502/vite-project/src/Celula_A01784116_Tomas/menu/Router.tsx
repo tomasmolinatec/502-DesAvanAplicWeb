@@ -1,26 +1,32 @@
-import React from "react";
+
 import { HashRouter, Routes, Route } from "react-router-dom";
 import Menu from "./Menu";
 import Details from "../EjemploClase/Details";
-import Clase4 from "../Clase4/main.tsx"
-import Clase5 from "../Clase5/clase5.tsx"
+import Clase4 from "../Clase4/main.tsx";
+import Clase5 from "../Clase5/clase5.tsx";
+import Clase6 from "../Clase6/App.tsx"; // Import Clase6
 
 export default function CelulaRouter() {
   return (
     <HashRouter>
       <Routes>
-        {/* ruta principal */}
+        {/* Main Route */}
         <Route path="/" element={<Menu />} />
-        {/* segunda pantalla */}
+
+        {/* Route for EjemploClase */}
         <Route path="EjemploClase" element={<Details />} />
-        {/* cualquier otra ruta, vuelve al menú */}
+
+        {/* Catch-all Route, goes back to Menu */}
         <Route path="*" element={<Menu />} />
-        {/* ruta para la clase 4 */}
+
+        {/* Route for Clase4 */}
         <Route path="Clase4" element={<Clase4 />} />
-        {/* ruta para la clase 5 */}
-        <Route path="Clase5" element={<Clase5/>} />
 
+        {/* Route for Clase5 */}
+        <Route path="Clase5" element={<Clase5 />} />
 
+        {/* Route for Clase6 and nested routes */}
+        <Route path="Clase6/*" element={<Clase6 />} />
       </Routes>
     </HashRouter>
   );

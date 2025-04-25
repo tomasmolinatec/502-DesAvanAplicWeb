@@ -2,6 +2,7 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import './TravelAndLogin.css';
+import { Link } from 'react-router-dom';
 
 // Validation schemas using Yup
 const loginValidationSchema = Yup.object({
@@ -151,6 +152,10 @@ const App = () => (
     <hr />
     <h1>Travel Request Form</h1>
     <TravelRequestForm />
+
+    <Link to="/" className="menu-button">
+        Volver al Menú
+      </Link>
   </div>
 );
 
