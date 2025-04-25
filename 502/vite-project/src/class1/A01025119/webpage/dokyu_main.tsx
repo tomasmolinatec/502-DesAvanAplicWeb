@@ -5,6 +5,7 @@ import LoginEx from '../../../class2/A01025119/login_exp';
 import Login from '../../../class3/A01025119/Login_page';
 import TravelRequestForm from '../../../class3/A01025119/Travel_request';
 import CustomLogin from '../../../class4/A01025119/customLogin';
+import TravelRequest from '../../../class5/A01028786/TravelRequest';
 import './main_design.css';
 import '../../../App.css';
 
@@ -15,7 +16,8 @@ type Page =
   | 'class2-travel'
   | 'class3'
   | 'travel-request'
-  | 'class4';
+  | 'class4'
+  | 'class5';
 
 export const A01025119 = () => {
   const [currentPage, setCurrentPage] = useState<Page>('home');
@@ -32,7 +34,8 @@ export const A01025119 = () => {
         hash === 'class2-travel' ||
         hash === 'class3' ||
         hash === 'travel-request' ||
-        hash === 'class4'
+        hash === 'class4' ||
+        hash === 'class5'
       ) {
         setCurrentPage(hash);
       } else {
@@ -70,6 +73,8 @@ export const A01025119 = () => {
         return <TravelRequestForm username={loggedInUser ?? ''} />;
       case 'class4':
         return <CustomLogin />;
+      case 'class5':
+        return <TravelRequest />
       default:
         return (
           <div className="main-container">
@@ -92,6 +97,9 @@ export const A01025119 = () => {
             <br />
             <button className="main-button" onClick={() => navigateTo('class4')}>
               Class 4 Custom Login
+            </button>
+            <button className="main-button" onClick={() => navigateTo('class5')}>
+              Class 5 Form Handling And Validation
             </button>
           </div>
         );
