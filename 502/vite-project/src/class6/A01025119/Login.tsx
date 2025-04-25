@@ -3,6 +3,7 @@ import InputField from "../../class2/A01025119/Input";
 import Button from "../../class2/A01025119/Button";
 import "./Login.css";
 import { UserContext, Role } from "./UserContext";
+import LoginFailed from "../../class4/A01025119/loginFail.tsx";
 
 const ContextLogin: React.FC = () => {
   const { login } = useContext(UserContext);
@@ -10,6 +11,7 @@ const ContextLogin: React.FC = () => {
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
+  const [loginState, setLoginState] = useState<"idle" | "fail">("idle");
 
   useEffect(() => {
     if (!error) return;
@@ -36,12 +38,23 @@ const ContextLogin: React.FC = () => {
         login(role);
         window.location.hash = "class6-dashboard";
       } else {
-        setError("Invalid username or password");
+        setLoginState("fail");
       }
 
       setLoading(false);
     }, 1000);
   };
+
+  const handleBack = () => {
+    setUsername("");
+    setPassword("");
+    setError("");
+    setLoginState("idle"); // ✅ Reset state to login page
+  };
+
+  if (loginState === "fail") {
+    return <LoginFailed onBack={handleBack} />;
+  }
 
   return (
     <div className="login-container">
@@ -51,6 +64,7 @@ const ContextLogin: React.FC = () => {
           {error}
         </p>
       )}
+  
 
       <InputField
         type="text"
