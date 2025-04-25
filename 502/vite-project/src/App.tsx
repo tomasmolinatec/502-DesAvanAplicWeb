@@ -3,7 +3,7 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+
   const navigateTo = (path: string) => {
     // You might want to use React Router instead of window.location
     window.location.href = path;
@@ -64,6 +64,14 @@ function App() {
         href="/src/class1/A01784116/menu/index.html"
       >
         Clases Tomas Molina
+        </a>
+
+        <a
+        href="/src/menu/A01028038/index.html"
+        style={{ display: "block", marginTop: "1rem" }}
+      >
+          trabajo Valeria Tapia
+        </a>
     </>
   );
 }
