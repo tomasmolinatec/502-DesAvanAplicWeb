@@ -7,6 +7,7 @@ function App() {
     <a href="/src/class2/A01028038/index.html">clase 2</a>
     <a href="/src/class3/A01028038/index.html">clase 3</a>
     <a href="/src/class4/A01028038/index.html">clase 4</a>
+    <a href="/src/class5/A01781321/index.html">clase 5</a>
     <a href="/src/class6/A01198339/index.html">clase 6</a>
     </>
   )
