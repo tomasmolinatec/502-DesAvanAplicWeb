@@ -1,4 +1,3 @@
-// dokyu_main.tsx
 import { useState, useEffect } from "react";
 import { JsConceptsApp } from "../Tarea/JSconcepts";
 import TravelRequests from "../../../class2/A01025119/travel_card";
@@ -6,6 +5,10 @@ import LoginEx from "../../../class2/A01025119/login_exp";
 import Login from "../../../class3/A01025119/Login_page";
 import TravelRequestForm from "../../../class3/A01025119/Travel_request";
 import CustomLogin from "../../../class4/A01025119/customLogin";
+
+// ——— CLASS 5 CONTEXT IMPORTS —————————————————————————————
+import TravelRequest from "../../../class5/A01028786/TravelRequest";
+// —————————————————————————————————————————————————————————
 
 // ——— CLASS 6 CONTEXT IMPORTS —————————————————————————————
 import { UserProvider } from "../../../class6/A01025119/UserContext";
@@ -24,6 +27,7 @@ type Page =
   | "class3"
   | "travel-request"
   | "class4"
+  | "class5"
   | "class6-login"
   | "class6-dashboard";
 
@@ -43,6 +47,7 @@ export const A01025119 = () => {
           "class3",
           "travel-request",
           "class4",
+          "class5",
           "class6-login",
           "class6-dashboard",
         ].includes(hash)
@@ -81,6 +86,8 @@ export const A01025119 = () => {
         return <TravelRequestForm username={loggedInUser ?? ""} />;
       case "class4":
         return <CustomLogin />;
+      case "class5":
+        return <TravelRequest />;
       case "class6-login":
         return (
           <UserProvider>
@@ -97,51 +104,43 @@ export const A01025119 = () => {
       default:
         return (
           <div className="main-container">
-            <h1 className="main-title">
-              Página principal de Do Kyu (A01025119)
-            </h1>
-
-            <button
-              className="main-button"
-              onClick={() => navigateTo("class1")}
-            >
-              Class 1 Arrow Functions
-            </button>
-            <br />
-            <button
-              className="main-button"
-              onClick={() => navigateTo("class2-login")}
-            >
-              Class 2 Login
-            </button>
-            <br />
-            <button
-              className="main-button"
-              onClick={() => navigateTo("class2-travel")}
-            >
-              Class 2 Travel Form
-            </button>
-            <br />
-            <button
-              className="main-button"
-              onClick={() => navigateTo("class3")}
-            >
-              Class 3 Login Authentication
-            </button>
-            <br />
-            <button
-              className="main-button"
-              onClick={() => navigateTo("class4")}
-            >
-              Class 4 Custom Login
-            </button>
-            <br />
-            <button
-              className="main-button"
-              onClick={() => navigateTo("class6-login")}
-            >
-              Class 6: Role-Based Login
-            </button>
+            <h1>Página principal</h1>
+            <ul>
+              <li>Do Kyu (A01025119)</li>
+              <li>Paul Araque</li>
+              <li>Alberto Limon</li>
+              <li>Francisco Urquizo</li>
+            </ul>
+        
+            <div className="button-grid">
+              <button className="main-button" onClick={() => navigateTo("class1")}>
+                Class 1 Arrow Functions
+              </button>
+        
+              <button className="main-button" onClick={() => navigateTo("class2-login")}>
+                Class 2 Login
+              </button>
+        
+              <button className="main-button" onClick={() => navigateTo("class2-travel")}>
+                Class 2 Travel Form
+              </button>
+        
+              <button className="main-button" onClick={() => navigateTo("class3")}>
+                Class 3 Login Authentication
+              </button>
+        
+              <button className="main-button" onClick={() => navigateTo("class4")}>
+                Class 4 Custom Login
+              </button>
+        
+              <button className="main-button" onClick={() => navigateTo("class5")}>
+                Class 5 Custom Login
+              </button>
+        
+              <button className="main-button" onClick={() => navigateTo("class6-login")}>
+                Class 6: Role-Based Login
+              </button>
+            </div>
           </div>
         );
     }
