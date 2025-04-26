@@ -1,6 +1,7 @@
 import Login from "./Login"
 import { useState } from 'react';
 import Dashboard from "./Dashboard";
+import './styles.css'
 
 
 function App() {
@@ -24,14 +25,14 @@ function App() {
 
   return (
     <>
-    <div>
+    <div className="App">
       {role ? (
         <Dashboard role={role} />
       ) : (
         <Login onLogin={handleLogin} />
       )}
+    <a href="/src/menu/A01028038/index.html" className="menu">Menu</a>
     </div>
-    <a href="/src/menu/A01028038/index.html">Menu</a>
     </>
   )
 }
