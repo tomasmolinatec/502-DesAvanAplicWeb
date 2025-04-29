@@ -50,7 +50,6 @@ function App() {
         </a>
         <a href="src/class1/A01784238/menu/index.html">A01784238 Menú de José Manuel García Zumaya</a>
       </div>
-<<<<<<< HEAD
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
@@ -59,12 +58,6 @@ function App() {
     >
       Clases Tomas Molina
     </a>
-  </>
-  );
-=======
-      <a href="/src/class1/A01784116/menu/index.html">
-      A01784116 Clases Tomas Molina
-      </a>
         <a
           href="/src/class1/A01782146/explorador/index.html"
           id="gabrieledid"
@@ -74,7 +67,6 @@ function App() {
         </a>
     </div>
   )
->>>>>>> 4731be77b95061e182abb5a5651d1bb560fbb1ae
 }
 
 export default App

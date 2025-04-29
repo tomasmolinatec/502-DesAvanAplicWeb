@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import "./Menu.css";
 
@@ -6,14 +5,17 @@ export default function Menu() {
   return (
     <div className="menu-container">
       <h1 className="menu-title">Menú de Trabajos en Equipo</h1>
-      <h3>Hecho por: Tomas Molina, Josefina Santacruz, Gabriel Edid y Joseph Shakalo</h3>
+      <h3>
+        Hecho por: Tomas Molina, Josefina Santacruz, Gabriel Edid y Joseph
+        Shakalo
+      </h3>
       <p>Selecciona una opción:</p>
 
-      {/* Link a la segunda pantalla */}
       <Link to="/EjemploClase" className="menu-button">
-        Ver Detalles
+        Ejemplo de Routeo
       </Link>
 
+      <h2>Milestone 2</h2>
       <Link to="/Clase4" className="menu-button">
         Clase 4
       </Link>
@@ -26,6 +28,10 @@ export default function Menu() {
         Clase 6
       </Link>
 
+      <h2>Milestone 3</h2>
+      <Link to="/Clase7" className="menu-button">
+        Clase 7
+      </Link>
     </div>
   );
 }
