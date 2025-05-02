@@ -4,6 +4,15 @@ import "./App.css";
 
 function App() {
 
+
+  const navigateTo = (path: string) => {
+    // You might want to use React Router instead of window.location
+    window.location.href = path;
+};
+
+
+
+
   return (
     <div>
       <h1>Vite + React</h1>
@@ -49,9 +58,23 @@ function App() {
         </a>
         <a href="src/class1/A01784238/menu/index.html">A01784238 Menú de José Manuel García Zumaya</a>
       </div>
-      <a href="/src/class1/A01784116/menu/index.html">
-      A01784116 Clases Tomas Molina
-      </a>
+
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
+      <a
+        href="/src/class1/A01784116/menu/index.html"
+      >
+        Clases Tomas Molina
+        </a>
+
+        <a
+        href="/src/menu/A01028038/index.html"
+        style={{ display: "block", marginTop: "1rem" }}
+      >
+          trabajo Valeria Tapia
+        </a>
+  
         <a
           href="/src/class1/A01782146/explorador/index.html"
           id="gabrieledid"
@@ -61,6 +84,7 @@ function App() {
         </a>
     </div>
   )
+
 }
 
 export default App
