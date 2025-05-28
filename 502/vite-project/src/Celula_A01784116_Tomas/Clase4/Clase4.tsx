@@ -1,8 +1,9 @@
-import { useEffect, useReducer, ChangeEvent } from 'react';
-import TravelFetcher from './TravelFetcher.tsx'; 
-import TravelRequestList from './TravelRequestLists.tsx';
+// src/Celula_A01784116_Tomas/Clase4/Clase4.tsx
+import React, { useEffect, useReducer, ChangeEvent } from "react";
+import TravelFetcher from "./TravelFetcher";
+import TravelRequestList from "./TravelRequestLists";
 
-// 1. Definir el tipo del estado
+/* ---------- 1. Tipos ---------- */
 type State = {
   username: string;
   password: string;
@@ -11,70 +12,105 @@ type State = {
   data: null | { user: string };
 };
 
-// 2. Definir el tipo de las acciones
 type Action =
-  | { type: 'UPDATE_FIELD'; field: keyof State; value: string }
-  | { type: 'LOGIN_START' }
-  | { type: 'LOGIN_SUCCESS'; payload: { user: string } }
-  | { type: 'LOGIN_ERROR' };
+  | { type: "UPDATE_FIELD"; field: keyof State; value: string }
+  | { type: "LOGIN_START" }
+  | { type: "LOGIN_SUCCESS"; payload: { user: string } }
+  | { type: "LOGIN_ERROR" };
 
-// 3. Estado inicial tipado
 const initialState: State = {
-  username: '',
-  password: '',
+  username: "",
+  password: "",
   loading: false,
-  error: '',
+  error: "",
   data: null,
 };
 
-// 4. Reducer con tipado
+/* ---------- 2. Reducer ---------- */
 const reducer = (state: State, action: Action): State => {
   switch (action.type) {
-    case 'UPDATE_FIELD':
+    case "UPDATE_FIELD":
       return { ...state, [action.field]: action.value };
-    case 'LOGIN_START':
-      return { ...state, loading: true, error: '' };
-    case 'LOGIN_SUCCESS':
+    case "LOGIN_START":
+      return { ...state, loading: true, error: "" };
+    case "LOGIN_SUCCESS":
       return { ...state, loading: false, data: action.payload };
-    case 'LOGIN_ERROR':
-      return { ...state, loading: false, error: 'Login failed' };
+    case "LOGIN_ERROR":
+      return { ...state, loading: false, error: "Login failed" };
     default:
       return state;
   }
 };
 
-const Login = () => {
+/* ---------- 3. Higher-Order Component sin errores ---------- */
+function withLogging<P>(
+  WrappedComponent: React.JSXElementConstructor<P>
+): React.FC<P> {
+  const ComponentWithLogging: React.FC<P> = (props) => {
+    useEffect(() => {
+      console.log(
+        `📋 [LOG] Componente ${
+          (WrappedComponent as any).displayName ||
+          (WrappedComponent as any).name ||
+          "Component"
+        } montado`
+      );
+    }, []);
+
+    return <WrappedComponent {...(props as P & React.Attributes)} />;
+  };
+
+  ComponentWithLogging.displayName = `withLogging(${
+    (WrappedComponent as any).displayName ||
+    (WrappedComponent as any).name ||
+    "Component"
+  })`;
+
+  return ComponentWithLogging;
+}
+
+/* ---------- 4. Componente simple ---------- */
+const Mensaje: React.FC = () => (
+  <p>Este es un componente simple con logging automático.</p>
+);
+
+/* ---------- 5. Componente con HOC aplicado ---------- */
+const MensajeConLogging = withLogging(Mensaje);
+
+/* ---------- 6. Componente principal ---------- */
+const Login: React.FC = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const handleLogin = () => {
-    dispatch({ type: 'LOGIN_START' });
+    dispatch({ type: "LOGIN_START" });
 
     setTimeout(() => {
-      if (state.username === 'admin' && state.password === '1234') {
-        dispatch({ type: 'LOGIN_SUCCESS', payload: { user: 'admin' } });
+      if (state.username === "admin" && state.password === "1234") {
+        dispatch({ type: "LOGIN_SUCCESS", payload: { user: "admin" } });
       } else {
-        dispatch({ type: 'LOGIN_ERROR' });
+        dispatch({ type: "LOGIN_ERROR" });
       }
     }, 2000);
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch({
-      type: 'UPDATE_FIELD',
+      type: "UPDATE_FIELD",
       field: e.target.placeholder.toLowerCase() as keyof State,
       value: e.target.value,
     });
   };
 
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/users/1')
-      .then(res => res.json())
-      .then(data => console.log('Fetched user:', data));
+    fetch("https://jsonplaceholder.typicode.com/users/1")
+      .then((res) => res.json())
+      .then((data) => console.log("Fetched user:", data));
   }, []);
 
   return (
     <div>
       <h2>Login</h2>
+
       <input
         type="text"
         placeholder="Username"
@@ -88,20 +124,21 @@ const Login = () => {
         onChange={handleChange}
       />
       <button onClick={handleLogin}>Login</button>
+
       {state.loading && <p>Loading...</p>}
-      {state.error && <p style={{ color: 'red' }}>{state.error}</p>}
+      {state.error && <p style={{ color: "red" }}>{state.error}</p>}
       {state.data && <p>Welcome {state.data.user}!</p>}
 
-      {/* Mostrar el componente con logging */}
+      {/* Componente envuelto con logging */}
       <MensajeConLogging />
 
+      {/* Lista de solicitudes de viaje */}
       <TravelRequestList />
 
-
-      {/* Mostrar datos con Render Props */}
+      {/* Render Props para solicitudes de viaje */}
       <TravelFetcher
         render={(data) => (
-          <div style={{ marginTop: '2rem' }}>
+          <div style={{ marginTop: "2rem" }}>
             <h2>Travel Requests (Render Props)</h2>
             <ul>
               {data.map((req) => (
@@ -117,25 +154,4 @@ const Login = () => {
   );
 };
 
-  
-
 export default Login;
-
-// HOC que agrega logging
-const withLogging = <P extends object>(WrappedComponent: React.ComponentType<P>) => {
-  return (props: P) => {
-    useEffect(() => {
-      console.log(`📋 [LOG] Componente ${WrappedComponent.name} montado`);
-    }, []);
-
-    return <WrappedComponent {...props} />;
-  };
-};
-
-// Componente simple
-const Mensaje = () => {
-  return <p>Este es un componente simple con logging automático.</p>;
-};
-
-// Componente con HOC aplicado
-const MensajeConLogging = withLogging(Mensaje);
