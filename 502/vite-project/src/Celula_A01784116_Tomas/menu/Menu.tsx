@@ -32,6 +32,10 @@ export default function Menu() {
       <Link to="/Clase7" className="menu-button">
         Clase 7
       </Link>
+
+      <div style={{ marginTop: "30px" }}>
+        <a href="/src/index.html">Main Menu</a>
+      </div>
     </div>
   );
 }
