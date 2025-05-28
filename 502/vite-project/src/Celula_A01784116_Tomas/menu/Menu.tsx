@@ -11,11 +11,11 @@ export default function Menu() {
       </h3>
       <p>Selecciona una opción:</p>
 
-      {/* Link a la segunda pantalla */}
       <Link to="/EjemploClase" className="menu-button">
-        Ver Detalles
+        Ejemplo de Routeo
       </Link>
 
+      <h2>Milestone 2</h2>
       <Link to="/Clase4" className="menu-button">
         Clase 4
       </Link>
@@ -26,6 +26,11 @@ export default function Menu() {
 
       <Link to="/Clase6" className="menu-button">
         Clase 6
+      </Link>
+
+      <h2>Milestone 3</h2>
+      <Link to="/Clase7" className="menu-button">
+        Clase 7
       </Link>
     </div>
   );
