@@ -5,13 +5,16 @@ interface Notification {
   text: string;
 }
 
-const Clase7: React.FC = () => {
+const RealTimeNotifications: React.FC = () => {
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [input, setInput] = useState("");
   const ws = useRef<WebSocket>();
 
   useEffect(() => {
-    ws.current = new WebSocket("ws://localhost:8080");
+    // build the correct ws:// or wss:// URL to /ws
+    const protocol = window.location.protocol === "https:" ? "wss" : "ws";
+    const host = window.location.host; // includes port if non-standard
+    ws.current = new WebSocket(`${protocol}://${host}/ws/`);
 
     ws.current.onopen = () => {
       console.log("✅ WS connected");
@@ -52,7 +55,6 @@ const Clase7: React.FC = () => {
     <div style={{ padding: 16 }}>
       <h2>Clase7 — Notificaciones en Tiempo Real con un WebSocket</h2>
 
-      {/* Form para enviar */}
       <div style={{ margin: "1rem 0" }}>
         <input
           type="text"
@@ -83,4 +85,4 @@ const Clase7: React.FC = () => {
   );
 };
 
-export default Clase7;
+export default RealTimeNotifications;

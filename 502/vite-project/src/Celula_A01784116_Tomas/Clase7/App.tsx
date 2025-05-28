@@ -1,4 +1,3 @@
-// src/Celula_A01784116_Tomas/Clase7/App.tsx
 import React from "react";
 import { Link } from "react-router-dom";
 import RealTimeNotifications from "./components/clase7";
