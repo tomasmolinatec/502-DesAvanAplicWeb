@@ -14,9 +14,7 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <a href="/src/class1/A01784116/menu/index.html">
-        A01784116 Clases Tomas Molina
-      </a>
+      <a href="/menu">A01784116 Clases Tomas Molina</a>
     </div>
   );
 }

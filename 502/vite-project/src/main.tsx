@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./App"; // tu página de inicio
-import Clase7Page from "./Celula_A01784116_Tomas/Clase7/App";
+import Clase7Page from "./Celula_A01784116_Tomas/menu/Menu";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
