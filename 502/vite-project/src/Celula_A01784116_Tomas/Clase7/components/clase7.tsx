@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import ReturnButton from "../../components/ReturnButton";
 
 interface Notification {
   id: number;
@@ -11,13 +12,16 @@ const RealTimeNotifications: React.FC = () => {
   const ws = useRef<WebSocket>();
 
   useEffect(() => {
-    // build the correct ws:// or wss:// URL to /ws
+    // define ws:// o wss:// según HTTPS y apunta al puerto 3001
     const protocol = window.location.protocol === "https:" ? "wss" : "ws";
-    const host = window.location.host; // includes port if non-standard
-    ws.current = new WebSocket(`${protocol}://${host}/ws/`);
+    const host = window.location.hostname; // p.e. "localhost" o "mi-dominio.com"
+    const port = "3001";
+    const socketUrl = `${protocol}://${host}:${port}/ws`;
+
+    ws.current = new WebSocket(socketUrl);
 
     ws.current.onopen = () => {
-      console.log("✅ WS connected");
+      console.log("✅ WS connected to", socketUrl);
     };
 
     ws.current.onmessage = (event) => {
@@ -53,6 +57,7 @@ const RealTimeNotifications: React.FC = () => {
 
   return (
     <div style={{ padding: 16 }}>
+      <ReturnButton />
       <h2>Clase7 — Notificaciones en Tiempo Real con un WebSocket</h2>
 
       <div style={{ margin: "1rem 0" }}>
