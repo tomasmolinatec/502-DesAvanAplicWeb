@@ -1,6 +1,8 @@
+// src/main.tsx
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Home from "./App";
 import Menu from "./Celula_A01784116_Tomas/menu/Menu";
 import Clase1 from "./class1/A01784116/actividad/Clase1";
@@ -10,15 +12,16 @@ import Clase4 from "./Celula_A01784116_Tomas/Clase4/Clase4";
 import Clase5 from "./Celula_A01784116_Tomas/Clase5/clase5";
 import Clase6 from "./Celula_A01784116_Tomas/Clase6/App";
 import Clase7 from "./Celula_A01784116_Tomas/Clase7/components/clase7";
+
 import { UserProvider } from "./Celula_A01784116_Tomas/Clase6/UserContext";
 import "./index.css";
 
-const root = ReactDOM.createRoot(document.getElementById("root")!);
-
-root.render(
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <UserProvider>
-      <BrowserRouter>
+    {/* 1️⃣  El router va primero */}
+    <BrowserRouter>
+      {/* 2️⃣  Todo lo que necesite hooks del router queda DENTRO */}
+      <UserProvider>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/menu" element={<Menu />} />
@@ -30,7 +33,7 @@ root.render(
           <Route path="/Clase6/*" element={<Clase6 />} />
           <Route path="/Clase7" element={<Clase7 />} />
         </Routes>
-      </BrowserRouter>
-    </UserProvider>
+      </UserProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
