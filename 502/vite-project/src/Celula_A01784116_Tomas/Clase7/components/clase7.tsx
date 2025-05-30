@@ -14,7 +14,7 @@ const RealTimeNotifications: React.FC = () => {
   useEffect(() => {
     // Conéctate SIEMPRE vía NGINX: mismo host/puerto + /ws/
     const protocol = window.location.protocol === "https:" ? "wss" : "ws";
-    const socketUrl = `${protocol}://${window.location.host}/ws/`;
+    const socketUrl = `${protocol}://${window.location.host}/ws`;
 
     ws.current = new WebSocket(socketUrl);
 
