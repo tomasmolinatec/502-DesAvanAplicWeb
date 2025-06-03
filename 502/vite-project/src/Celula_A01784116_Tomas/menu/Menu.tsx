@@ -11,8 +11,17 @@ export default function Menu() {
       </h3>
       <p>Selecciona una opción:</p>
 
-      <Link to="/EjemploClase" className="menu-button">
-        Ejemplo de Routeo
+      <h2>Milestone 1</h2>
+      <Link to="/Clase1" className="menu-button">
+        Clase 1
+      </Link>
+
+      <Link to="/Clase2" className="menu-button">
+        Clase 2
+      </Link>
+
+      <Link to="/Clase3" className="menu-button">
+        Clase 3
       </Link>
 
       <h2>Milestone 2</h2>
@@ -34,7 +43,9 @@ export default function Menu() {
       </Link>
 
       <div style={{ marginTop: "30px" }}>
-        <a href="/src/index.html">Main Menu</a>
+        <Link to="/" className="menu-button">
+          Main Menu
+        </Link>
       </div>
     </div>
   );

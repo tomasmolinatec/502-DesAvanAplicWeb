@@ -1,4 +1,3 @@
-// vite.config.ts
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { resolve, join } from "path";
@@ -48,9 +47,13 @@ function getHtmlInputs() {
 
 export default defineConfig({
   plugins: [react()],
+  base: "/",
+  resolve: {
+    dedupe: ["react", "react-dom", "react-router-dom"], // ← evita dobles copias
+  },
   build: {
-    rollupOptions: {
-      input: getHtmlInputs(),
-    },
+    outDir: "dist",
+    emptyOutDir: true,
+
   },
 });

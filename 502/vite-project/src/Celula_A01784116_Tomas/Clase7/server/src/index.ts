@@ -1,6 +1,7 @@
+// src/index.ts
 import WebSocket, { WebSocketServer } from "ws";
 
-// Listen on port 3001 and only on the /ws path:
+/* ───────── Servidor en 0.0.0.0:3001 SOLO en la ruta /ws ───────── */
 export const wss = new WebSocketServer({
   port: 3001,
   path: "/ws",
@@ -9,7 +10,7 @@ export const wss = new WebSocketServer({
 wss.on("connection", (ws) => {
   console.log("⚡ New client connected");
 
-  // Send a welcome message immediately
+  // mensaje de bienvenida
   ws.send(
     JSON.stringify({
       type: "info",
@@ -17,30 +18,26 @@ wss.on("connection", (ws) => {
     })
   );
 
-  // Every 10 seconds send a ping
+  // ping cada 10 s
   const timer = setInterval(() => {
     if (ws.readyState === WebSocket.OPEN) {
       ws.send(
         JSON.stringify({
           type: "ping",
           message:
-            "Han pasado 10 segundos: " +
-            new Date().toLocaleTimeString() +
-            " 🕒",
+            "Han pasado 10 s: " + new Date().toLocaleTimeString() + " 🕒",
         })
       );
     }
-  }, 10000);
+  }, 10_000);
 
-  // Broadcast any received chat message
+  // eco a todos los clientes
   ws.on("message", (data) => {
-    const message = data.toString();
-    console.log(`📥 Received: ${message}`);
-    wss.clients.forEach((client) => {
-      if (client.readyState === WebSocket.OPEN) {
-        client.send(message);
-      }
-    });
+    const msg = data.toString();
+    console.log("📥", msg);
+    wss.clients.forEach((c) =>
+      c.readyState === WebSocket.OPEN ? c.send(msg) : null
+    );
   });
 
   ws.on("close", () => {
